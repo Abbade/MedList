@@ -13,7 +13,7 @@ namespace ListMed.Controllers
 
         public ActionResult Index()
         {
-            var teste = db.Clinicas.ToList();
+            //var teste = db.Clinicas.ToList();
             return View();
         }
 
