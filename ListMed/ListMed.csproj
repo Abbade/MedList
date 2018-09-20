@@ -156,6 +156,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="DTO\ClinicaDTO.cs" />
+    <Compile Include="DTO\geometry.cs" />
+    <Compile Include="DTO\location.cs" />
+    <Compile Include="DTO\opening_hours.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

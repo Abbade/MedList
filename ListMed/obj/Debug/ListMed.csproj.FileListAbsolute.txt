@@ -208,3 +208,12 @@ D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.csproj.CoreCompileInputs.
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.csproj.CopyComplete
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.dll
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.pdb
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.Globalization.Calendars.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.Net.Http.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.Net.Sockets.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.clinic.resources
