@@ -13,6 +13,8 @@ namespace ListMed.Models
         [Key]
         public int Id { get; set; }
 
+        public string PlaceID { get; set; }
+
         [StringLength(180)]
         public string NomeFantasia { get; set; }
 
@@ -25,19 +27,6 @@ namespace ListMed.Models
         [StringLength(80)]
         public string LinkSite { get; set; }
 
-        public int? IdCidade { get; set; }
-        // desnormalizacao
-        public string DescricaoCidade { get; set; }
-
-        public int? IdBairro { get; set; }
-
-        //desnormalizacao
-        public string DescricaoBairro { get; set; }
-
-        public int? IdEstado { get; set; }
-
-        // desnormalizacao
-        public string UF { get; set; }
 
         public string Lt { get; set; }
 
@@ -45,11 +34,15 @@ namespace ListMed.Models
 
         public string EnderecoFormatado { get; set; }
 
+        public double avaliacao { get; set; }
+
         public decimal? Preco { get; set; }
 
         public DateTime? HoraAbertura { get; set; }
 
         public DateTime? HoraFechamento { get; set; }
+
+        public bool? abertoAgora { get; set; }
 
         [StringLength(17)]
         public string Telefone1 { get; set; }
