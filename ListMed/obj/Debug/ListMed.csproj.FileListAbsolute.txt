@@ -331,3 +331,9 @@ C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.csproj.Co
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.csproj.CopyComplete
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.dll
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.pdb
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidade.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidadexclinica.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto1.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto2.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.clinica_acerto.resources

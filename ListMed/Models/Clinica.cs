@@ -10,6 +10,10 @@ namespace ListMed.Models
     [Table("Clinica")]
     public class Clinica
     {
+        public Clinica()
+        {
+            Localidades = new List<Localidade>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -38,17 +42,18 @@ namespace ListMed.Models
 
         public decimal? Preco { get; set; }
 
-        public DateTime? HoraAbertura { get; set; }
+        public TimeSpan HoraAbertura { get; set; }
 
-        public DateTime? HoraFechamento { get; set; }
+        public TimeSpan HoraFechamento { get; set; }
 
-        public bool? abertoAgora { get; set; }
 
         [StringLength(17)]
         public string Telefone1 { get; set; }
 
         [StringLength(17)]
         public string Telefone2 { get; set; }
+
+        public virtual List<Localidade> Localidades { get; set; }
 
     }
 }

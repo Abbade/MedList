@@ -155,8 +155,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\prospectsController.cs" />
     <Compile Include="DTO\ClinicaDTO.cs" />
+    <Compile Include="DTO\estados.cs" />
     <Compile Include="DTO\geometry.cs" />
     <Compile Include="DTO\location.cs" />
     <Compile Include="DTO\opening_hours.cs" />
@@ -175,8 +178,33 @@
     <Compile Include="Migrations\201809142012458_clinic.Designer.cs">
       <DependentUpon>201809142012458_clinic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810280134362_Localidade.cs" />
+    <Compile Include="Migrations\201810280134362_Localidade.Designer.cs">
+      <DependentUpon>201810280134362_Localidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810280140236_Localidadexclinica.cs" />
+    <Compile Include="Migrations\201810280140236_Localidadexclinica.Designer.cs">
+      <DependentUpon>201810280140236_Localidadexclinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810280145493_Localidade_acerto.cs" />
+    <Compile Include="Migrations\201810280145493_Localidade_acerto.Designer.cs">
+      <DependentUpon>201810280145493_Localidade_acerto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810280220582_Localidade_acerto1.cs" />
+    <Compile Include="Migrations\201810280220582_Localidade_acerto1.Designer.cs">
+      <DependentUpon>201810280220582_Localidade_acerto1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810280429201_Localidade_acerto2.cs" />
+    <Compile Include="Migrations\201810280429201_Localidade_acerto2.Designer.cs">
+      <DependentUpon>201810280429201_Localidade_acerto2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810280502213_clinica_acerto.cs" />
+    <Compile Include="Migrations\201810280502213_clinica_acerto.Designer.cs">
+      <DependentUpon>201810280502213_clinica_acerto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Clinica.cs" />
+    <Compile Include="Models\Localidade.cs" />
     <Compile Include="Models\MedListContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,12 +215,54 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ScriptMed\Inicio.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -221,6 +291,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -256,6 +328,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Inicio\Index.cshtml" />
+    <Content Include="Views\Clinicas\Index.cshtml" />
+    <Content Include="Views\prospects\Create.cshtml" />
+    <Content Include="Views\prospects\Delete.cshtml" />
+    <Content Include="Views\prospects\Details.cshtml" />
+    <Content Include="Views\prospects\Edit.cshtml" />
+    <Content Include="Views\prospects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +358,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809142012458_clinic.resx">
       <DependentUpon>201809142012458_clinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810280134362_Localidade.resx">
+      <DependentUpon>201810280134362_Localidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810280140236_Localidadexclinica.resx">
+      <DependentUpon>201810280140236_Localidadexclinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810280145493_Localidade_acerto.resx">
+      <DependentUpon>201810280145493_Localidade_acerto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810280220582_Localidade_acerto1.resx">
+      <DependentUpon>201810280220582_Localidade_acerto1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810280429201_Localidade_acerto2.resx">
+      <DependentUpon>201810280429201_Localidade_acerto2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810280502213_clinica_acerto.resx">
+      <DependentUpon>201810280502213_clinica_acerto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

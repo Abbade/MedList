@@ -5,12 +5,26 @@
 }
 
 <div class="row ">
-    <div class="m-auto w-50 " >
-        <div style="margin-top: 25%;">
+    <div class="m-auto w-50 ">
+        <div class="divFormInicio">
             <h1>Med List</h1>
-            <input type="text" class="form-control shadow p-3 mb-5 bg-white rounded"  placeholder="Exemplo: Rio de Janeiro" />
+            <form action="~/Clinicas" method="get">
+                <input type="text" class="formInicio shadow  mb-5 bg-white rounded" id="procura_clinica" name="localidade" placeholder="Exemplo: Rio de Janeiro" />
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </form>
         </div>
-
     </div>
 </div>
+@*<div class="row">
+    <div class="col-md-12">
+        <div class="input-group">
+            <textarea id="estados"></textarea><br />
+            <button type="button" class="btn btn-success" id="vaiEstados">Vai Estados</button>
+        </div>
+    </div>
+</div>*@
+@section scripts {
 
+    @Scripts.Render("~/ScriptMed/Inicio.js")
+
+}

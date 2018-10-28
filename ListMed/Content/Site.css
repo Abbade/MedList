@@ -19,6 +19,10 @@ footer {
     padding-left: 0;
     padding-right: 0.5rem;
 }
+    .nav-dir:hover, .nav-dir:focus {
+        color: rgba(0, 0, 0, 0.7);
+        text-decoration: none;
+    }
 @media (min-width: 768px) {
     html, body {
         font-size: 16px;
@@ -29,9 +33,24 @@ footer {
         padding-left: 0.5rem;
     }
 }
-
-
-    .nav-dir:hover, .nav-dir:focus {
-        color: rgba(0, 0, 0, 0.7);
-        text-decoration: none;
+.formInicio {
+    display: inline-block;
+    width: 80%;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.divFormInicio {
+    margin-top: 25%;
+    
+}
+.divFormInicio input, .divFormInicio button{
+    padding: 0.7rem;
+}
+    .divFormInicio button{
+        position: relative;
+        top: -2px;
     }

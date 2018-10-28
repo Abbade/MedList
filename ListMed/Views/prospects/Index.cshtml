@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ListMed.Models.Clinica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TituloSite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Snippet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LinkSite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnderecoFormatado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.avaliacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoraAbertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoraFechamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone2)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TituloSite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Snippet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LinkSite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnderecoFormatado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.avaliacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoraAbertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoraFechamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone2)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

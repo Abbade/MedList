@@ -13,5 +13,6 @@ namespace ListMed.Models
 
         }
         public DbSet<Clinica> Clinicas { get; set; }
+        public DbSet<Localidade> Localidades { get; set; }
     }
 }

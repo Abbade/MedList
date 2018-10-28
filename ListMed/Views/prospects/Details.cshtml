@@ -1,0 +1,130 @@
+﻿@model ListMed.Models.Clinica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clinica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeFantasia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TituloSite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TituloSite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Snippet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Snippet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkSite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkSite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoFormatado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoFormatado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.avaliacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.avaliacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraAbertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraAbertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraFechamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraFechamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone2)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
