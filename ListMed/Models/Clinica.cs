@@ -13,6 +13,8 @@ namespace ListMed.Models
         public Clinica()
         {
             Localidades = new List<Localidade>();
+            Servicos = new List<Servico>();
+            Especialidades = new List<Especialidade>();
         }
         [Key]
         public int Id { get; set; }
@@ -40,7 +42,9 @@ namespace ListMed.Models
 
         public double avaliacao { get; set; }
 
-        public decimal? Preco { get; set; }
+        public decimal? PrecoConsulta { get; set; }
+
+        public decimal? PrecoExame { get; set; }
 
         public TimeSpan HoraAbertura { get; set; }
 
@@ -54,6 +58,10 @@ namespace ListMed.Models
         public string Telefone2 { get; set; }
 
         public virtual List<Localidade> Localidades { get; set; }
+        
+        public virtual List<Servico> Servicos { get; set; }
+
+        public virtual List<Especialidade> Especialidades { get; set; }
 
     }
 }

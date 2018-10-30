@@ -337,3 +337,12 @@ C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migration
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto1.resources
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto2.resources
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.clinica_acerto.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.Localidade.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.Localidadexclinica.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto1.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.Localidade_acerto2.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.clinica_acerto.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos1.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos2.resources

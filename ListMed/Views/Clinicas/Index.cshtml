@@ -3,5 +3,47 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<nav class="navbar navbar-expand-md bg-light navbar-light border-bottom shadow-sm">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav flex-fill">
+            <li class="nav-item lifiltro" >
+                <div class="lipreco">
+                    <label>Preço</label><label id="demo" style="float: right;">R$</label><br />
+                    <input type="range" min="1" max="500" value="500" step="0.01" style="width: 20em;" class="slider" id="myRange">
+                </div>
+            </li>
+            <li class="nav-item lifiltro" style="padding-top: 0.5rem;">
+
+                @Html.DropDownList("Id", ViewBag.servicos as SelectList, "Selecione Serviço", new { @class = "form-control slcServicos" })
+            </li>
+            <li class="nav-item lifiltro" style="padding-top: 0.5rem;">
+
+                <button class="btn btn-secondary nav-item">Especialidades</button>
+
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<div class="row">
+    <div class="col-8">
+        lista clinicas
+    </div>
+    <div class="col-4">
+      mapa
+    </div>
+</div>
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = "R$ " + slider.value.toString().replace(".", ",");
+
+    slider.oninput = function () {
+        output.innerHTML = "R$ " + this.value.toString().replace(".", ",");
+    }
+</script>
