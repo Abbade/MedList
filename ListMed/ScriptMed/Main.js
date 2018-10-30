@@ -1,4 +1,15 @@
-﻿$("#procura_clinica").autocomplete({
+﻿function pegarParametro() {
+    var result = {}, keyValuePairs = location.search.slice(1).split("&");
+    keyValuePairs.forEach(function (keyValuePair) {
+        keyValuePair = keyValuePair.split('=');
+        result[decodeURIComponent(keyValuePair[0])] = decodeURIComponent(keyValuePair[1]) || '';
+    });
+    return result;
+}
+function botaEspaco(str) {
+    return str.replace("+", " ");
+}
+$("#procura_clinica").autocomplete({
     source: function (request, response) {
         console.log(request.term);
         $.ajax({

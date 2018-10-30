@@ -277,6 +277,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ScriptMed\Clinicas.js" />
     <Content Include="ScriptMed\Inicio.js" />
     <Content Include="ScriptMed\Main.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
