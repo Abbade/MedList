@@ -22,7 +22,8 @@ namespace ListMed
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/main.js",
-                      "~/Scripts/jquery-ui-1.12.1.js"));
+                      "~/Scripts/jquery-ui-1.12.1.js",
+                      "~/ScriptMed/Main.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

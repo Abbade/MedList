@@ -54,3 +54,48 @@ footer {
         position: relative;
         top: -2px;
     }
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 10px;
+        height: 25px;
+        background: #007bff;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+.lifiltro{
+    margin-right: 5%;
+}
+.procuraClinica_lista {
+    background-image: url("../Content/Imagens/procura.svg.png");
+    background-size: 20px;
+    background-position: 5px 8px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}

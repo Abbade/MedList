@@ -18,10 +18,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="~/Inicio">MedList</a>
                 </li>
+                @if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "CLINICAS" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
+                {
+                    <li class="nav-item">
+                        <form action="~/Clinicas" method="get" class="form_consultaClinica">
+                            <input class="form-control mr-sm-5 procuraClinica_lista" type="search" id="procura_clinica" name="localidade" placeholder="Ex: Rio de Janeiro" aria-label="Search">
+                        </form>
+        
+                    </li>
+                }
+
 
             </ul>
-            <a href="#" class="nav-dir">Ferramentas</a>
-            <a href="#" class="nav-dir">Documentação</a>
             <a href="#" class="nav-dir">Entre</a>
             <a href="#" class="btn btn-outline-primary ">Cadastre-se</a>
 

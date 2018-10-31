@@ -41,7 +41,7 @@ namespace ListMed.Controllers
             {
                 label = a.Descricao,
                 value = a.Descricao
-            }).ToList();
+            }).Take(10).ToList();
             return Json(localidades);
         }
 

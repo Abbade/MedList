@@ -13,6 +13,8 @@ namespace ListMed.Controllers
 
         public ActionResult Index(string localidade)
         {
+            ViewBag.servicos = new SelectList(db.Servicos, "Id", "Descricao");
+            ViewBag.especialidades = new SelectList(db.Especialidades, "Id", "Descricao");
             var clinicas = db.Clinicas.Where(c => c.Localidades.Any(a => a.Descricao.ToUpper().Contains(localidade.ToUpper()))).ToList();
             return View(clinicas);
         }

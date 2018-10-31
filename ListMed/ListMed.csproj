@@ -202,10 +202,24 @@
     <Compile Include="Migrations\201810280502213_clinica_acerto.Designer.cs">
       <DependentUpon>201810280502213_clinica_acerto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810301534172_especialidadeEservicos.cs" />
+    <Compile Include="Migrations\201810301534172_especialidadeEservicos.Designer.cs">
+      <DependentUpon>201810301534172_especialidadeEservicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810301539419_especialidadeEservicos1.cs" />
+    <Compile Include="Migrations\201810301539419_especialidadeEservicos1.Designer.cs">
+      <DependentUpon>201810301539419_especialidadeEservicos1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810301546071_especialidadeEservicos2.cs" />
+    <Compile Include="Migrations\201810301546071_especialidadeEservicos2.Designer.cs">
+      <DependentUpon>201810301546071_especialidadeEservicos2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Clinica.cs" />
+    <Compile Include="Models\Especialidade.cs" />
     <Compile Include="Models\Localidade.cs" />
     <Compile Include="Models\MedListContext.cs" />
+    <Compile Include="Models\Servico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +229,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Imagens\procura.svg.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -262,7 +277,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ScriptMed\Clinicas.js" />
     <Content Include="ScriptMed\Inicio.js" />
+    <Content Include="ScriptMed\Main.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -376,6 +393,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810280502213_clinica_acerto.resx">
       <DependentUpon>201810280502213_clinica_acerto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810301534172_especialidadeEservicos.resx">
+      <DependentUpon>201810301534172_especialidadeEservicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810301539419_especialidadeEservicos1.resx">
+      <DependentUpon>201810301539419_especialidadeEservicos1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810301546071_especialidadeEservicos2.resx">
+      <DependentUpon>201810301546071_especialidadeEservicos2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
