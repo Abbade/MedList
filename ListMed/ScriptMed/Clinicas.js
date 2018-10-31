@@ -20,3 +20,48 @@ function recuperarFiltros() {
 $('#myRange').on('change', function () {
     recuperarFiltros();
 });
+
+$("#txtEspecialidades").autocomplete({
+
+    source: function (request, response) {
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'Clinicas/listarEspecialidades',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify({ "nome": request.term, "escolhidas": escolhidas }),
+            success: function (data) {
+                response(data);
+
+            },
+            error: function (error) { console.log(error); }
+        }).fail(function (error) { console.log(error); });
+    },
+    minLength: 0,
+    appendTo: "#autoEspec",
+    autoFocus: true,
+    select: function (event, ui) {
+        event.preventDefault();
+        $('.divEspecialidades').append('<div class="chip boxEspecialidades" ref="' + ui.item.value + '"><small>' + ui.item.label + '</small><span class="closebtn">&times;</span></div>');
+        $('#txtEspecialidades').val(ui.item.label);
+        $('#txtEspecialidades').val("");
+
+        $('.closebtn').on('click', function () {
+            $(this).parent().remove();
+        });
+
+        $(this).val('');
+        $(this).trigger('blur');
+    }
+
+}).focus(function () {
+    escolhidas = [];
+    $('.divEspecialidades').find('.boxEspecialidades').each(function () {
+        escolhidas.push(parseInt($(this).attr('ref')));
+    });
+    $(this).autocomplete("search");
+});
+$('.closebtn').on('click', function () {
+    $(this).parent().remove();
+});

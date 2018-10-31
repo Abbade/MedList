@@ -10,6 +10,7 @@
 packages
 bin
 obj
+config
 .vs/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
