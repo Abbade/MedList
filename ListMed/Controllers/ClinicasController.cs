@@ -18,7 +18,10 @@ namespace ListMed.Controllers
             var clinicas = db.Clinicas.Where(c => c.Localidades.Any(a => a.Descricao.ToUpper().Contains(localidade.ToUpper()))).ToList();
             return View(clinicas);
         }
-
+        public JsonResult listarClinicas(FiltroClinica filtros)
+        {
+            return Json("Ok");
+        }
         public JsonResult listarEspecialidades(string nome, int [] escolhidas)
         {
             List<Autocomplete> especialidades = new List<Autocomplete>();

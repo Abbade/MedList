@@ -7,20 +7,39 @@ function recuperarFiltros() {
     var parametrosClinica = pegarParametro();
 
     var localidade = botaEspaco(parametrosClinica['localidade']);
-    var preco = $('#myRange').val();
+    var preco = $('#myRange').val().toString().replace(".", ",");
     var servico = $('.slcServicos').val();
+    var especialidades = [];
+    $('.divEspecialidades').find('.boxEspecialidades').each(function () {
+        especialidades.push(parseInt($(this).attr('ref')));
+    });
     var filtro = {
         localidade: localidade,
         preco: preco,
-        servico: servico
+        servico: servico,
+        especialidades : especialidades
     };
-    console.log(filtro);
+  
     return filtro;
 }
 $('#myRange').on('change', function () {
-    recuperarFiltros();
+    listarClinicas();
 });
+function listarClinicas() {
+    var filtros = recuperarFiltros();
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'Clinicas/listarClinicas',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({ "filtros": filtros}),
+        success: function (response) {
+            console.log(response);
 
+        },
+        error: function (error) { console.log(error); }
+    }).fail(function (error) { console.log(error); });
+}
 $("#txtEspecialidades").autocomplete({
 
     source: function (request, response) {
