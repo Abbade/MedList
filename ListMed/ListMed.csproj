@@ -158,8 +158,10 @@
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\prospectsController.cs" />
+    <Compile Include="DTO\Autocomplete.cs" />
     <Compile Include="DTO\ClinicaDTO.cs" />
     <Compile Include="DTO\estados.cs" />
+    <Compile Include="DTO\FiltroClinica.cs" />
     <Compile Include="DTO\geometry.cs" />
     <Compile Include="DTO\location.cs" />
     <Compile Include="DTO\opening_hours.cs" />
