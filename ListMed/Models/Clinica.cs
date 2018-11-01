@@ -15,6 +15,7 @@ namespace ListMed.Models
             Localidades = new List<Localidade>();
             Servicos = new List<Servico>();
             Especialidades = new List<Especialidade>();
+            Avaliacoes = new List<Avaliacao>();
         }
         [Key]
         public int Id { get; set; }
@@ -27,8 +28,6 @@ namespace ListMed.Models
         [StringLength(180)]
         public string TituloSite { get; set; }
 
-
-        public string Snippet { get; set; }
 
         [StringLength(80)]
         public string LinkSite { get; set; }
@@ -56,6 +55,8 @@ namespace ListMed.Models
 
         [StringLength(17)]
         public string Telefone2 { get; set; }
+
+        public virtual List<Avaliacao> Avaliacoes { get; set; }
 
         public virtual List<Localidade> Localidades { get; set; }
         

@@ -25,27 +25,27 @@ namespace ListMed.Controllers
         // GET: Inicio
         public ActionResult Index()
         {
-            //db.Especialidades.Add(new Especialidade() { descricao = "Acupuntura" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Angiologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Cardiologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Clínica Médica" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Dermatologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Endocrinologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Gastroenterologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Ginecologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Mastologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Neurologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Nutrição" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Ortopedia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Otorrinolaringologia" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Pediatria" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Psiquiatria" });
-            //db.Especialidades.Add(new Especialidade() { descricao = "Urologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Acupuntura" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Angiologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Cardiologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Clínica Médica" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Dermatologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Endocrinologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Gastroenterologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Ginecologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Mastologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Neurologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Nutrição" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Ortopedia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Otorrinolaringologia" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Pediatria" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Psiquiatria" });
+            db.Especialidades.Add(new Especialidade() { descricao = "Urologia" });
 
-            //db.SaveChanges();
+            db.SaveChanges();
 
             //List<ClinicaDTO> clinicas = new List<ClinicaDTO>();
-           
+
             //HttpResponseMessage response = client.GetAsync("/maps/api/place/textsearch/json?input=clinica%20popular%20rio%20de%20janeiro&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry,place_id,price_level,permanently_closed&key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8").Result;
             //if (response.IsSuccessStatusCode)
             //{

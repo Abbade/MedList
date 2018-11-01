@@ -346,3 +346,7 @@ D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.clinica_acerto
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos.resources
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos1.resources
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos2.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos1.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos2.resources
+C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.add_avaliacao.resources
