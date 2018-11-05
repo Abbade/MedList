@@ -87,10 +87,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PrecoConsulta, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Preco, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PrecoConsulta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrecoConsulta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrecoExame, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PrecoExame, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrecoExame, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -125,30 +133,7 @@
                 @Html.ValidationMessageFor(model => model.Telefone2, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="row">
-            <div class="col-3">
-                <div class="form-group">
-                    <label>Estados</label>
-                    @Html.DropDownList("Id", ViewBag.Estados as SelectList, "Selecione", new { Name = "estados", @class = "form-control" })
-                </div>
 
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label>Cidades</label>
-                    @Html.DropDownList("Id", ViewBag.Cidades as SelectList, "Selecione", new { Name = "cidades", @class = "form-control" })
-                </div>
-
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label>Bairros</label>
-                    @Html.DropDownList("Id", ViewBag.Bairros as SelectList, "Selecione", new { Name = "bairros", @class = "form-control" })
-                </div>
-
-            </div>
-        </div>
-    
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

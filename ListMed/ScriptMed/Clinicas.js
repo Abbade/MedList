@@ -25,6 +25,9 @@ function recuperarFiltros() {
 $('#myRange').on('change', function () {
     listarClinicas();
 });
+$('.slcServicos').on('change', function () {
+    listarClinicas();
+});
 function listarClinicas() {
     var filtros = recuperarFiltros();
     $.ajax({
@@ -72,6 +75,7 @@ $("#txtEspecialidades").autocomplete({
 
         $(this).val('');
         $(this).trigger('blur');
+        listarClinicas();
     }
 
 }).focus(function () {

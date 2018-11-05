@@ -155,9 +155,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AjudeController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
-    <Compile Include="Controllers\prospectsController.cs" />
     <Compile Include="DTO\Autocomplete.cs" />
     <Compile Include="DTO\ClinicaDTO.cs" />
     <Compile Include="DTO\estados.cs" />
@@ -348,11 +348,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Inicio\Index.cshtml" />
     <Content Include="Views\Clinicas\Index.cshtml" />
-    <Content Include="Views\prospects\Create.cshtml" />
-    <Content Include="Views\prospects\Delete.cshtml" />
-    <Content Include="Views\prospects\Details.cshtml" />
-    <Content Include="Views\prospects\Edit.cshtml" />
-    <Content Include="Views\prospects\Index.cshtml" />
+    <Content Include="Views\Ajude\Create.cshtml" />
+    <Content Include="Views\Ajude\Delete.cshtml" />
+    <Content Include="Views\Ajude\Details.cshtml" />
+    <Content Include="Views\Ajude\Edit.cshtml" />
+    <Content Include="Views\Ajude\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

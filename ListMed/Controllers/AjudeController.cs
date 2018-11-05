@@ -10,17 +10,17 @@ using ListMed.Models;
 
 namespace ListMed.Controllers
 {
-    public class prospectsController : Controller
+    public class AjudeController : Controller
     {
         private MedListContext db = new MedListContext();
 
-        // GET: prospects
+        // GET: Ajude
         public ActionResult Index()
         {
             return View(db.Clinicas.ToList());
         }
 
-        // GET: prospects/Details/5
+        // GET: Ajude/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,48 +35,21 @@ namespace ListMed.Controllers
             return View(clinica);
         }
 
-        // GET: prospects/Create
+        // GET: Ajude/Create
         public ActionResult Create()
         {
-            ViewBag.Estados = new SelectList(db.Localidades.Where(a => a.Tipo.Equals("E")), "Id", "Descricao");
-            ViewBag.Cidades = new SelectList(db.Localidades.Where(a => a.Tipo.Equals("C")), "Id", "Descricao");
-            ViewBag.Bairros = new SelectList(db.Localidades.Where(a => a.Tipo.Equals("B")), "Id", "Descricao");
             return View();
         }
 
-        // POST: prospects/Create
+        // POST: Ajude/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PlaceID,NomeFantasia,TituloSite,Snippet,LinkSite,Lt,Lg,EnderecoFormatado,avaliacao,Preco,HoraAbertura,HoraFechamento,Telefone1,Telefone2")] Clinica clinica, int estado = 0, int bairro = 0, int cidade = 0)
+        public ActionResult Create([Bind(Include = "Id,PlaceID,NomeFantasia,TituloSite,Snippet,LinkSite,Lt,Lg,EnderecoFormatado,avaliacao,PrecoConsulta,PrecoExame,HoraAbertura,HoraFechamento,Telefone1,Telefone2")] Clinica clinica)
         {
             if (ModelState.IsValid)
             {
-                if(estado > 0)
-                {
-                  
-                    var local = db.Localidades.Find(estado);
-                    if (local != null)
-                        clinica.Localidades.Add(local);
-                    
-                }
-                if (cidade > 0)
-                {
-                    
-                    var local = db.Localidades.Find(cidade);
-                    if (local != null)
-                        clinica.Localidades.Add(local);
-                    
-                }
-                if (bairro> 0)
-                {
-                    
-                    var local = db.Localidades.Find(bairro);
-                    if (local != null)
-                        clinica.Localidades.Add(local);
-                    
-                }
                 db.Clinicas.Add(clinica);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,7 +58,7 @@ namespace ListMed.Controllers
             return View(clinica);
         }
 
-        // GET: prospects/Edit/5
+        // GET: Ajude/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -100,12 +73,12 @@ namespace ListMed.Controllers
             return View(clinica);
         }
 
-        // POST: prospects/Edit/5
+        // POST: Ajude/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PlaceID,NomeFantasia,TituloSite,Snippet,LinkSite,Lt,Lg,EnderecoFormatado,avaliacao,Preco,HoraAbertura,HoraFechamento,Telefone1,Telefone2")] Clinica clinica)
+        public ActionResult Edit([Bind(Include = "Id,PlaceID,NomeFantasia,TituloSite,Snippet,LinkSite,Lt,Lg,EnderecoFormatado,avaliacao,PrecoConsulta,PrecoExame,HoraAbertura,HoraFechamento,Telefone1,Telefone2")] Clinica clinica)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +89,7 @@ namespace ListMed.Controllers
             return View(clinica);
         }
 
-        // GET: prospects/Delete/5
+        // GET: Ajude/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -131,7 +104,7 @@ namespace ListMed.Controllers
             return View(clinica);
         }
 
-        // POST: prospects/Delete/5
+        // POST: Ajude/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -20,7 +20,10 @@ namespace ListMed.Controllers
         }
         public JsonResult listarClinicas(FiltroClinica filtros)
         {
-            return Json("Ok");
+            var clinicas = db.Clinicas.Where(c => (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco)).Select(a => new {
+                nome = a.NomeFantasia
+            });
+            return Json(clinicas);
         }
         public JsonResult listarEspecialidades(string nome, int [] escolhidas)
         {
