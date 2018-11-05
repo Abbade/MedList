@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ListMed.Controllers
 {
+
     public class ClinicasController : Controller
     {
         private MedListContext db = new MedListContext();
@@ -30,6 +31,13 @@ namespace ListMed.Controllers
             else
                 clinicas = db.Clinicas.Where(c => c.Estado.Descricao.ToUpper().Contains(localidade.ToUpper())).ToList();
             return View(clinicas);
+        }
+
+
+        public ActionResult Recupera(int id)
+        {
+            
+            return View(db.Clinicas.Find(id));
         }
 
         [HttpPost]

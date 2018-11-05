@@ -5,10 +5,10 @@
 
 
 <nav class="navbar navbar-expand-md bg-light navbar-light border-bottom shadow-sm">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar1">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar1">
         <ul class="navbar-nav flex-fill">
             <li class="nav-item lifiltro">
                 <div class="lipreco">
@@ -29,16 +29,19 @@
 
     </div>
 </nav>
-<div class="row">
-    <div class="col-8">
-        <div id="clinicas">
-            @Html.Partial("~/Views/Shared/_Clinicas.cshtml", Model)
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-9 ">
+            <div id="clinicas">
+                @Html.Partial("~/Views/Shared/_Clinicas.cshtml", Model)
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-3 hidden-sm-down">
+            mapa
         </div>
     </div>
-    <div class="col-4">
-        mapa
-    </div>
 </div>
+
 
 
 <div class="modal fade" id="modalEspecialidades" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

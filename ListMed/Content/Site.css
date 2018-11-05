@@ -136,3 +136,26 @@ footer {
         color: #000;
     }
 /* fim caixa p/ selecionar multiplos objetos ex: Usuarios*/
+
+.linkClinica {
+    text-decoration: none;
+    color: inherit;
+}
+
+    .linkClinica:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .linkClinica:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+    .linkClinica:active {
+        color: inherit;
+        text-decoration: none;
+    }
+
+.checado {
+    color: orange;
+}

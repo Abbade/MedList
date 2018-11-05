@@ -1,0 +1,4 @@
+@using api_mobvendas.Areas.HelpPage.ModelDescriptions
+@model KeyValuePairModelDescription
+Par de @Html.DisplayFor(m => Model.KeyModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.KeyModelDescription }) [chave]
+and @Html.DisplayFor(m => Model.ValueModelDescription.ModelType, "ModelDescriptionLink", new { modelDescription = Model.ValueModelDescription }) [valor]

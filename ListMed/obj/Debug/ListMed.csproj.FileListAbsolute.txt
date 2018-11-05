@@ -350,3 +350,11 @@ C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migration
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos1.resources
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.especialidadeEservicos2.resources
 C:\Users\GabrielAbbade\Desktop\Faculdade\tcc\ListMed\obj\Debug\ListMed.Migrations.add_avaliacao.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.add_avaliacao.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.fotos.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.fotos1.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.cidadebairro.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto1.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto11.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto12.resources

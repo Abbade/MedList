@@ -3,9 +3,135 @@
 
 @foreach (var clinica in Model)
 {
-    <div class="card">
-        <div class="card-body">
-            @clinica.NomeFantasia
+    <a href="~/Clinicas/Recupera/@clinica.Id" class="linkClinica">
+        <div class="card" style="margin-bottom: 1rem; margin-top: 1rem;">
+            <div class="row" style="padding: 0;">
+                <div class="col-sm-3 border-right">
+                    @if (clinica.Fotos == null)
+                    {
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem" width="200" height="130" />
+                    }
+                    else if (clinica.Fotos.Count == 0)
+                    {
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem" width="200" height="130" />
+                    }
+                    else if (clinica.Fotos.Count == 1)
+                    {
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem" width="200" height="130" />
+                    }
+
+                </div>
+                <div class="col-sm-6 border-right">
+                    <div class="card-body">
+                        <b>@clinica.NomeFantasia</b><br />
+                        <small>Telefone(s): @clinica.Telefone1 @(clinica.Telefone2 != null ? ", " + clinica.Telefone2 : "")</small><br />
+                        <small>Endereço: @clinica.EnderecoFormatado</small>
+                    </div>
+
+                </div>
+                <div class="col-sm-3">
+                    Exames: R$ <br />
+                    Consultas: R$ <br />
+                    <div id="estrelas" title="@clinica.avaliacao">
+                        @if (clinica.avaliacao > 0)
+                        {
+                            if (clinica.avaliacao < 1)
+                            {
+                                <span class="fa fa-star-half-full checado"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+                            else if (clinica.avaliacao < 1.5)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+                            else if (clinica.avaliacao < 2)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star-half-full checado"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+                            else if (clinica.avaliacao < 2.5)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+                            else if (clinica.avaliacao < 3)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star-half-full checado"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+
+                            }
+                            else if (clinica.avaliacao < 3.5)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+
+                            }
+                            else if (clinica.avaliacao < 4)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star-half-full checado"></span>
+                                <span class="fa fa-star"></span>
+                            }
+                            else if (clinica.avaliacao < 4.5)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star"></span>
+                            }
+                            else if (clinica.avaliacao < 5)
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star-half-full checado"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                                <span class="fa fa-star checado"></span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                    </div>
+               
+                </div>
+            </div>
+
         </div>
-    </div>
+    </a>
+
 }
