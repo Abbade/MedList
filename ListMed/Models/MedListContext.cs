@@ -13,8 +13,12 @@ namespace ListMed.Models
 
         }
         public DbSet<Clinica> Clinicas { get; set; }
-        public DbSet<Localidade> Localidades { get; set; }
+        public DbSet<Estado> Estados { get; set; }
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Especialidade> Especialidades { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<Foto> Fotos { get; set; }
+        public DbSet<Cidade> Cidades { get; set; }
+        public DbSet<Bairro> Bairros { get; set; }
     }
 }

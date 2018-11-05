@@ -12,9 +12,11 @@ namespace ListMed.Models
     {
         public Clinica()
         {
-            Localidades = new List<Localidade>();
+
             Servicos = new List<Servico>();
             Especialidades = new List<Especialidade>();
+            Avaliacoes = new List<Avaliacao>();
+            Fotos = new List<Foto>();
         }
         [Key]
         public int Id { get; set; }
@@ -27,8 +29,6 @@ namespace ListMed.Models
         [StringLength(180)]
         public string TituloSite { get; set; }
 
-
-        public string Snippet { get; set; }
 
         [StringLength(80)]
         public string LinkSite { get; set; }
@@ -50,6 +50,12 @@ namespace ListMed.Models
 
         public TimeSpan HoraFechamento { get; set; }
 
+        public int? IdEstado { get; set; }
+
+
+        public int? IdCidade { get; set; }
+
+        public int? IdBairro { get; set; }
 
         [StringLength(17)]
         public string Telefone1 { get; set; }
@@ -57,11 +63,21 @@ namespace ListMed.Models
         [StringLength(17)]
         public string Telefone2 { get; set; }
 
-        public virtual List<Localidade> Localidades { get; set; }
+        public virtual List<Avaliacao> Avaliacoes { get; set; }
+
+        [ForeignKey("IdEstado")]
+        public virtual Estado Estado { get; set; }
+
+        [ForeignKey("IdCidade")]
+        public virtual Cidade Cidade { get; set; }
+
+        [ForeignKey("IdBairro")]
+        public virtual Bairro Bairro { get; set; }
         
         public virtual List<Servico> Servicos { get; set; }
 
         public virtual List<Especialidade> Especialidades { get; set; }
 
+        public virtual List<Foto> Fotos { get; set; }
     }
 }

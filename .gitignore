@@ -18,6 +18,8 @@ js/app.min.js
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+obj\Debug
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
