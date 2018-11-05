@@ -7,6 +7,7 @@
     return result;
 }
 function botaEspaco(str) {
+
     return str.replace(/\+/g, " ");
 }
 $("#procura_clinica").autocomplete({

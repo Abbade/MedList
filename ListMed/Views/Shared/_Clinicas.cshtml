@@ -1,0 +1,11 @@
+﻿@model List<ListMed.Models.Clinica>
+
+
+@foreach (var clinica in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            @clinica.NomeFantasia
+        </div>
+    </div>
+}

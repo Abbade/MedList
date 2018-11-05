@@ -157,14 +157,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
-    <Compile Include="Controllers\prospectsController.cs" />
+    <Compile Include="Controllers\MinerarController.cs" />
     <Compile Include="DTO\Autocomplete.cs" />
-    <Compile Include="DTO\ClinicaDTO.cs" />
+    <Compile Include="DTO\Lead.cs" />
     <Compile Include="DTO\estados.cs" />
     <Compile Include="DTO\FiltroClinica.cs" />
     <Compile Include="DTO\geometry.cs" />
     <Compile Include="DTO\location.cs" />
     <Compile Include="DTO\opening_hours.cs" />
+    <Compile Include="DTO\retornoMineracao.cs" />
+    <Compile Include="DTO\retornoPlaceID.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,12 +222,45 @@
     <Compile Include="Migrations\201811010328043_add_avaliacao.Designer.cs">
       <DependentUpon>201811010328043_add_avaliacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811020226135_fotos.cs" />
+    <Compile Include="Migrations\201811020226135_fotos.Designer.cs">
+      <DependentUpon>201811020226135_fotos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811020324266_fotos1.cs" />
+    <Compile Include="Migrations\201811020324266_fotos1.Designer.cs">
+      <DependentUpon>201811020324266_fotos1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050024112_cidadebairro.cs" />
+    <Compile Include="Migrations\201811050024112_cidadebairro.Designer.cs">
+      <DependentUpon>201811050024112_cidadebairro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050252501_foto.cs" />
+    <Compile Include="Migrations\201811050252501_foto.Designer.cs">
+      <DependentUpon>201811050252501_foto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050255030_foto1.cs" />
+    <Compile Include="Migrations\201811050255030_foto1.Designer.cs">
+      <DependentUpon>201811050255030_foto1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050257133_foto11.cs" />
+    <Compile Include="Migrations\201811050257133_foto11.Designer.cs">
+      <DependentUpon>201811050257133_foto11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050301577_foto12.cs" />
+    <Compile Include="Migrations\201811050301577_foto12.Designer.cs">
+      <DependentUpon>201811050301577_foto12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Mineracao\MinerarClinicas.cs" />
     <Compile Include="Models\Avaliacao.cs" />
+    <Compile Include="Models\Bairro.cs" />
+    <Compile Include="Models\Cidade.cs" />
     <Compile Include="Models\Clinica.cs" />
     <Compile Include="Models\Especialidade.cs" />
-    <Compile Include="Models\Localidade.cs" />
+    <Compile Include="Models\Foto.cs" />
+    <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\MedListContext.cs" />
+    <Compile Include="DTO\photos.cs" />
     <Compile Include="Models\Servico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -358,6 +393,8 @@
     <Content Include="Views\prospects\Details.cshtml" />
     <Content Include="Views\prospects\Edit.cshtml" />
     <Content Include="Views\prospects\Index.cshtml" />
+    <Content Include="Views\Minerar\Index.cshtml" />
+    <Content Include="Views\Shared\_Clinicas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -412,6 +449,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811010328043_add_avaliacao.resx">
       <DependentUpon>201811010328043_add_avaliacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811020226135_fotos.resx">
+      <DependentUpon>201811020226135_fotos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811020324266_fotos1.resx">
+      <DependentUpon>201811020324266_fotos1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050024112_cidadebairro.resx">
+      <DependentUpon>201811050024112_cidadebairro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050252501_foto.resx">
+      <DependentUpon>201811050252501_foto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050255030_foto1.resx">
+      <DependentUpon>201811050255030_foto1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050257133_foto11.resx">
+      <DependentUpon>201811050257133_foto11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050301577_foto12.resx">
+      <DependentUpon>201811050301577_foto12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

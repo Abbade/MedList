@@ -1,6 +1,6 @@
 ﻿@model List<ListMed.Models.Clinica>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Início";
 }
 
 
@@ -31,7 +31,9 @@
 </nav>
 <div class="row">
     <div class="col-8">
-        lista clinicas
+        <div id="clinicas">
+            @Html.Partial("~/Views/Shared/_Clinicas.cshtml", Model)
+        </div>
     </div>
     <div class="col-4">
         mapa
