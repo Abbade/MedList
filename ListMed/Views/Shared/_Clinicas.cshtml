@@ -30,8 +30,8 @@
 
                 </div>
                 <div class="col-sm-2">
-                    Exames: R$ <br />
-                    Consultas: R$ <br />
+                    <small>Exames: R$ @clinica.PrecoExame</small><br />
+                                                                 <small>Consultas: R$ @clinica.PrecoConsulta</small><br />
                     <div id="estrelas" title="@clinica.avaliacao">
                         @if (clinica.avaliacao > 0)
                         {
@@ -136,26 +136,32 @@
 
 }
     <script>
+        initMap();
+    
         function initMap() {
-            var teste = [];
-            var lt, lg = "";
+            var locations = [];
+            @if(Model != null && Model.Count > 0)
+            {
+                @:var lt = @Model[0].Lt.ToString().Replace(",", ".");
+                @:var lg = @Model[0].Lg.ToString().Replace(",", ".");
+            }
+            else {
+               @:var lt = 0;
+               @: var lg = 0;
+            }
+
 
             @for(int i = 0; i < Model.Count; i++)
             {
-                @:teste.push(new Array("@Model[i].NomeFantasia", "@Model[i].Lt", "@Model[i].Lg", @(i+1)));
+         
+                @:locations.push(new Array("@Model[i].NomeFantasia", @Model[i].Lt.ToString().Replace(",", "."), @Model[i].Lg.ToString().Replace(",", "."), @(i+1)));
             }
 
-            var locations = [
-
-
-
-                      ['Bondi Beach', -33.890542, 151.274856, 4]
-   
-        ];
+ 
             console.log(locations);
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: new google.maps.LatLng(-33.92, 151.25),
+        zoom: 12,
+        center: new google.maps.LatLng(lt, lg),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
