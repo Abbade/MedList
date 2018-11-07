@@ -57,9 +57,17 @@ namespace ListMed.Controllers
                 }
               
                 if (local == " (Cidade)")
-                    model = db.Clinicas.Where(c => c.Cidade.Descricao.ToUpper().Contains(filtros.localidade.ToUpper())).ToList();
+                    model = db.Clinicas.Where(c => c.Cidade.Descricao.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null)) ).ToList();
                 else
-                    model = db.Clinicas.Where(c => c.Estado.Descricao.ToUpper().Contains(filtros.localidade.ToUpper())).ToList();
+                    model = db.Clinicas.Where(c => c.Estado.Descricao.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null ))).ToList();
+                if(filtros.servico > 0)
+                {
+                    model = model.Where(a => a.Servicos.Any(s => s.Id == filtros.servico)).ToList();
+                }
+                if(filtros.especialidades != null && filtros.especialidades.Count > 0)
+                {
+                    model = model.Where(m => m.Especialidades.Any(a => filtros.especialidades.Contains(a.Id))).ToList();
+                }
 
             }
 

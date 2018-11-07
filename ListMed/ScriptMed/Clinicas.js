@@ -47,7 +47,7 @@ function listarClinicas() {
     }).fail(function (error) { console.log(error); })
         .done(function (partialViewResult) {
             $("#clinicas").html(partialViewResult);
-        });;
+        });
 }
 $("#txtEspecialidades").autocomplete({
 
@@ -77,6 +77,7 @@ $("#txtEspecialidades").autocomplete({
 
         $('.closebtn').on('click', function () {
             $(this).parent().remove();
+            listarClinicas();
         });
 
         $(this).val('');
@@ -93,4 +94,6 @@ $("#txtEspecialidades").autocomplete({
 });
 $('.closebtn').on('click', function () {
     $(this).parent().remove();
+    listarClinicas();
 });
+

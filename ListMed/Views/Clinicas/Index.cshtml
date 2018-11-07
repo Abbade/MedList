@@ -31,13 +31,13 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-9 ">
+        <div class="col-12 col-sm-12 col-md-8 ">
             <div id="clinicas">
                 @Html.Partial("~/Views/Shared/_Clinicas.cshtml", Model)
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-3 hidden-sm-down">
-            mapa
+        <div class="col-12 col-sm-12 col-md-4 hidden-sm-down">
+            <div id="map"></div>
         </div>
     </div>
 </div>
@@ -52,14 +52,14 @@
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12">
                             <div class="form-group" id="autoEspec">
-                                <label for="txtEspecialidades"  style="text-align: center;">Especialidades</label>
+                                <label for="txtEspecialidades" style="text-align: center;">Especialidades</label>
                                 <input type="text" class="form-control procuraClinica_lista" id="txtEspecialidades" />
                             </div>
                         </div>
                     </div>
                 </div>
-     
-    
+
+
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
@@ -89,7 +89,9 @@
     }
 </script>
 @section scripts {
-
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8&callback=initMap">
+    </script>
     @Scripts.Render("~/ScriptMed/Clinicas.js")
 
 }

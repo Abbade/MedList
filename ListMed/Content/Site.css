@@ -159,3 +159,11 @@ footer {
 .checado {
     color: orange;
 }
+/* mapa */
+#map {
+    height: 400px; 
+    width: 100%;
+}
+.card {
+    height: 186px;
+}
