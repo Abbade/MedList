@@ -20,5 +20,6 @@ namespace ListMed.Models
         public DbSet<Foto> Fotos { get; set; }
         public DbSet<Cidade> Cidades { get; set; }
         public DbSet<Bairro> Bairros { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }

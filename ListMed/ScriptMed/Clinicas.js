@@ -97,3 +97,25 @@ $('.closebtn').on('click', function () {
     listarClinicas();
 });
 
+
+$(".avalia").on({
+    mouseenter: function () {
+       
+        for (var i = 0; i <= this.id; i++) {
+            $('#' + i).addClass('checado');
+        }
+
+    
+    },
+    mouseleave: function () {
+        for (var i = 0; i <= this.id; i++) {
+            $('#' + i).removeClass('checado');
+        }
+    },
+    click: function () {
+        $('.check').removeClass('check');
+        for (var i = 0; i <= this.id; i++) {
+            $('#' + i).addClass('check');
+        }
+    }
+});

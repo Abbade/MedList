@@ -13,7 +13,7 @@ namespace ListMed.Models
         [Key]
         public int Id { get; set; }
 
-        [Range(0, 5)]
+        [Range(1, 5)]
         public int? nota { get; set; }
 
         [StringLength(275)]
@@ -21,7 +21,12 @@ namespace ListMed.Models
 
         public int IdClinica { get; set; }
 
+        public int IdUsuario { get; set; }
+
         [ForeignKey("IdClinica")]
         public virtual Clinica Clinica { get; set; }
+
+        [ForeignKey("IdUsuario")]
+        public virtual Usuario Usuario { get; set; }
     }
 }

@@ -1,0 +1,192 @@
+﻿@model ListMed.Models.Clinica
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<div class="container shadow" style="margin-top: 2%; ">
+    <div class="row border-bottom">
+        <div class="col-md-8 border-right">
+            <div id="infos">
+                <h4>@Html.DisplayFor(model => model.NomeFantasia)</h4><br />
+                <a href="@Model.LinkSite" target="_blank">Visitar Site</a><br />
+                <span>Telefone 1:</span> @Html.DisplayFor(model => model.Telefone1)<br />
+                <span>Telefone 2:</span> @Html.DisplayFor(model => model.Telefone2)<br />
+
+                <span>Endereço Completo:</span> @Model.EnderecoFormatado<br />
+                <p>Serviços: </p>
+
+                @foreach (var servico in Model.Servicos)
+                {
+                    <div class="chip-visualiza">
+                        <small>@servico.Descricao</small>
+                    </div>
+                }
+                <p>Especialidades: </p>
+                @foreach (var especialidade in Model.Especialidades)
+                {
+                    <div class="chip-visualiza">
+                        <small>@especialidade.descricao</small>
+                    </div>
+                }
+                <br />
+                <span>Avaliação</span>
+                <div id="estrelas" title="@Model.avaliacao">
+                    @if (Model.avaliacao > 0)
+                    {
+                        if (Model.avaliacao < 1)
+                        {
+                            <span class="fa fa-star-half-full checado"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.avaliacao < 1.5)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.avaliacao < 2)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star-half-full checado"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.avaliacao < 2.5)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.avaliacao < 3)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star-half-full checado"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                        }
+                        else if (Model.avaliacao < 3.5)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                        }
+                        else if (Model.avaliacao < 4)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star-half-full checado"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.avaliacao < 4.5)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.avaliacao < 5)
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star-half-full checado"></span>
+                        }
+                        else
+                        {
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                            <span class="fa fa-star checado"></span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    }
+                </div>
+                <br />
+
+            </div>
+
+
+        </div>
+        <div class="col-md-4" style="padding-bottom: 10px; padding-top: 10px;">
+            <div id="mapa"></div>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-md-8 offset-2">
+            <h4 class="text-center">Avaliações: </h4>
+            <div class="avaliacoes border">
+
+            </div>
+            <!-- if for logado -->
+            <h4 class="text-center">Avalie: </h4>
+            <div class="divAvaliacao border p-4">
+                <div class="form-group">
+                    <span>Nota: </span>
+                    <span class="fa fa-star avalia" id="0"></span>
+                    <span class="fa fa-star avalia" id="1"></span>
+                    <span class="fa fa-star avalia" id="2"></span>
+                    <span class="fa fa-star avalia" id="3"></span>
+                    <span class="fa fa-star avalia" id="4"></span>
+                </div>
+
+                <div class="form-group">
+                    <span for="descAvaliacao">Descrição: </span>
+                    <textarea class="form-control" id="descAvaliacao" rows="3"></textarea>
+                </div>
+                <div class="form-group" style="text-align: right;">
+                    <input type="button" class="btn btn-primary" value="Avalie" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    @Scripts.Render("~/ScriptMed/Clinicas.js")
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8&callback=InitDet">
+    </script>
+    <script>
+        function InitDet() {
+            var myLatLng = { lat: @Model.Lt.ToString().Replace(",", "."), lng: @Model.Lg.ToString().Replace(",", ".") };
+
+            var map = new google.maps.Map(document.getElementById('mapa'), {
+                zoom: 14,
+                center: myLatLng
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: "@Model.NomeFantasia"
+            });
+        }
+    </script>
+}

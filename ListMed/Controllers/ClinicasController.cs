@@ -13,6 +13,7 @@ namespace ListMed.Controllers
     {
         private MedListContext db = new MedListContext();
 
+        [Authorize]
         public ActionResult Index(string localidade)
         {
             int inicio = localidade.IndexOf(" (");
@@ -34,12 +35,11 @@ namespace ListMed.Controllers
         }
 
 
-        public ActionResult Recupera(int id)
+ 
+        public ActionResult Detalhes(int id)
         {
-            
             return View(db.Clinicas.Find(id));
         }
-
         [HttpPost]
         public ActionResult listarClinicas(FiltroClinica filtros)
         {

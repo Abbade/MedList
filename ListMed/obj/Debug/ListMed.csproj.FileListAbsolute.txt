@@ -358,3 +358,13 @@ D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto.resources
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto1.resources
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto11.resources
 D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.foto12.resources
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.Security.Cookies.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.Security.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Owin.dll
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.xml
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.Security.xml
+D:\gabrielAbbade\tcc\MedList\ListMed\bin\Microsoft.Owin.Security.Cookies.xml
+D:\gabrielAbbade\tcc\MedList\ListMed\obj\Debug\ListMed.Migrations.usuario.resources
