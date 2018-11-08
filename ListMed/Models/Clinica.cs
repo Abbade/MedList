@@ -17,6 +17,7 @@ namespace ListMed.Models
             Especialidades = new List<Especialidade>();
             Avaliacoes = new List<Avaliacao>();
             Fotos = new List<Foto>();
+            Usuarios = new List<Usuario>();
         }
         [Key]
         public int Id { get; set; }
@@ -79,5 +80,8 @@ namespace ListMed.Models
         public virtual List<Especialidade> Especialidades { get; set; }
 
         public virtual List<Foto> Fotos { get; set; }
+
+        // usuarios que gostaram da clinica
+        public virtual List<Usuario> Usuarios { get; set; }
     }
 }

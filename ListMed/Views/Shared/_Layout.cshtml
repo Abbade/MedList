@@ -18,20 +18,37 @@
                 <li class="nav-item">
                     <a class="nav-link" href="~/Inicio">MedList</a>
                 </li>
-                @if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "CLINICAS" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
+                @if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "CLINICAS" && (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "DETALHES"))
                 {
                     <li class="nav-item">
                         <form action="~/Clinicas" method="get" class="form_consultaClinica">
                             <input class="form-control mr-sm-5 procuraClinica_lista" type="search" id="procura_clinica" name="localidade" placeholder="Ex: Rio de Janeiro" aria-label="Search">
                         </form>
-        
+
                     </li>
                 }
 
 
             </ul>
-            <a href="#" class="nav-dir">Entre</a>
-            <a href="#" class="btn btn-outline-primary ">Cadastre-se</a>
+            <ul class="nav navbar navbar-right"></ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="#" class="dropdown-toggle nav-dir" data-toggle="dropdown">
+                    @User.Identity.Name<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="~/Perfil/AlterarSenha" class="nav-dir">Alterar Senha</a></li>
+                    <li><a href="~/Autenticacao/LogOut" class="nav-dir">Sair</a></li>
+
+                </ul>
+
+            }
+            else
+            {
+                <a href="~/Autenticacao/Login" class="nav-dir">Entre</a>
+                <a href="~/Autenticacao/Cadastrar" class="btn btn-outline-primary ">Cadastre-se</a>
+            }
+
 
         </div>
     </nav>

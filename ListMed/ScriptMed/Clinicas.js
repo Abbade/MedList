@@ -47,7 +47,7 @@ function listarClinicas() {
     }).fail(function (error) { console.log(error); })
         .done(function (partialViewResult) {
             $("#clinicas").html(partialViewResult);
-        });;
+        });
 }
 $("#txtEspecialidades").autocomplete({
 
@@ -77,6 +77,7 @@ $("#txtEspecialidades").autocomplete({
 
         $('.closebtn').on('click', function () {
             $(this).parent().remove();
+            listarClinicas();
         });
 
         $(this).val('');
@@ -93,4 +94,28 @@ $("#txtEspecialidades").autocomplete({
 });
 $('.closebtn').on('click', function () {
     $(this).parent().remove();
+    listarClinicas();
+});
+
+
+$(".avalia").on({
+    mouseenter: function () {
+       
+        for (var i = 0; i <= this.id; i++) {
+            $('#' + i).addClass('checado');
+        }
+
+    
+    },
+    mouseleave: function () {
+        for (var i = 0; i <= this.id; i++) {
+            $('#' + i).removeClass('checado');
+        }
+    },
+    click: function () {
+        $('.check').removeClass('check');
+        for (var i = 0; i <= this.id; i++) {
+            $('#' + i).addClass('check');
+        }
+    }
 });

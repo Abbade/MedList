@@ -159,3 +159,41 @@ footer {
 .checado {
     color: orange;
 }
+.check {
+    color: orange;
+}
+/* mapa */
+#map {
+    height: 500px; 
+    width: 100%;
+
+}
+#mapa {
+    height: 400px;
+    width: 100%;
+    
+}
+.card {
+    height: 186px;
+}
+#infos{
+    padding: 15px;
+}
+#infos span, #infos p{
+    font-weight: 700;
+}
+.chip-visualiza {
+    display: inline-block;
+    padding: 0 10px 5px 10px;
+    height: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    border-radius: 25px;
+    background-color: #ADB9CA;
+    margin-right: 5px;
+    color: white;
+    margin-bottom: 10px;
+}
+.avalia{
+    cursor: pointer;
+}
