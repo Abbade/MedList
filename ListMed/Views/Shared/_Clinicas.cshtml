@@ -9,19 +9,19 @@
                 <div class="col-sm-3  fotos align-self-center" style="z-index: 1;padding-right: 0;">
                     @if (clinica.Fotos == null)
                     {
-                        <img src="~/Content/Imagens/vazia.jpg" class="img-fluid" title="sem imagem" alt="sem imagem"  style="width: 100%;max-height: 132px;" />
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem"  />
                     }
                     else if (clinica.Fotos.Count == 0)
                     {
-                        <img src="~/Content/Imagens/vazia.jpg" class="img-fluid" title="sem imagem" alt="sem imagem"  style="width: 100%;max-height: 132px;" />
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem"  />
                     }
                     else if (clinica.Fotos.Count == 1)
                     {
-                        <img src="~/Content/Imagens/vazia.jpg" class="img-fluid" class="" title="sem imagem" alt="sem imagem" style="width: 100%;max-height: 132px;"  />
+                        <img src="~/Content/Imagens/vazia.jpg" class="" title="sem imagem" alt="sem imagem" style="width: 100%;max-height: 132px;"  />
                     }
 
                 </div>
-                <div class="col-md-6 col-sm-12 border-left border-right">
+                <div class="col-sm-6 border-left border-right">
                     <div class="card-body">
                         <b>@clinica.NomeFantasia</b><br />
                         <small>Telefone(s): @clinica.Telefone1 @(clinica.Telefone2 != null ? ", " + clinica.Telefone2 : "")</small><br />
@@ -29,7 +29,7 @@
                     </div>
 
                 </div>
-                <div class="col-sm-2 maisInfos">
+                <div class="col-sm-2">
                     <small>Exames: R$ @clinica.PrecoExame</small><br />
                                                                  <small>Consultas: R$ @clinica.PrecoConsulta</small><br />
                     <div id="estrelas" title="@clinica.avaliacao">
@@ -136,10 +136,7 @@
 
 }
     <script>
-        $(function () {
-            initMap();
-        });
-        
+        initMap();
     
         function initMap() {
             var locations = [];
@@ -163,7 +160,7 @@
  
             console.log(locations);
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: zoom,
+        zoom: 12,
         center: new google.maps.LatLng(lt, lg),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });

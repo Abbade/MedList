@@ -127,14 +127,7 @@
                     }
                 </div>
                 <br />
-                @if (Model.Usuarios != null && Model.Usuarios.Count > 0)
-                {
-                    <a href="#@Model.Id"><span class="fa fa-heart coracao cor-coracao"></span></a>
-                }
-                else
-                {
-                    <a href="#@Model.Id"><span class="fa fa-heart coracao"></span></a>
-                }
+
             </div>
 
 
@@ -150,30 +143,26 @@
 
             </div>
             <!-- if for logado -->
-            @if (User.Identity.IsAuthenticated)
-            {
-                <h4 class="text-center">Avalie: </h4>
-                <div class="divAvaliacao border p-4">
-                    <div class="form-group">
-                        <span>Nota: </span>
-                        <span class="fa fa-star avalia" id="0"></span>
-                        <span class="fa fa-star avalia" id="1"></span>
-                        <span class="fa fa-star avalia" id="2"></span>
-                        <span class="fa fa-star avalia" id="3"></span>
-                        <span class="fa fa-star avalia" id="4"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <span for="descAvaliacao">Descrição: </span>
-                        <textarea class="form-control" id="descAvaliacao" rows="3"></textarea>
-                    </div>
-                    <div class="form-group" style="text-align: right;">
-                        <input type="button" class="btn btn-primary" value="Avalie" />
-                    </div>
-
+            <h4 class="text-center">Avalie: </h4>
+            <div class="divAvaliacao border p-4">
+                <div class="form-group">
+                    <span>Nota: </span>
+                    <span class="fa fa-star avalia" id="0"></span>
+                    <span class="fa fa-star avalia" id="1"></span>
+                    <span class="fa fa-star avalia" id="2"></span>
+                    <span class="fa fa-star avalia" id="3"></span>
+                    <span class="fa fa-star avalia" id="4"></span>
                 </div>
-            }
 
+                <div class="form-group">
+                    <span for="descAvaliacao">Descrição: </span>
+                    <textarea class="form-control" id="descAvaliacao" rows="3"></textarea>
+                </div>
+                <div class="form-group" style="text-align: right;">
+                    <input type="button" class="btn btn-primary" value="Avalie" />
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -192,17 +181,12 @@
                 zoom: 14,
                 center: myLatLng
             });
-            var infowindow = new google.maps.InfoWindow();
+
             var marker = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
+                title: "@Model.NomeFantasia"
             });
-           google.maps.event.addListener(marker, 'click', (function (marker) {
-            return function () {
-                infowindow.setContent("<b>@Model.NomeFantasia</b><br/><small>@Model.EnderecoFormatado</small>");
-                infowindow.open(map, marker);
-            }
-        })(marker));
         }
     </script>
 }

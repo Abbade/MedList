@@ -3,7 +3,6 @@ using ListMed.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,7 +13,7 @@ namespace ListMed.Controllers
     {
         private MedListContext db = new MedListContext();
 
-
+     
         public ActionResult Index(string localidade)
         {
             int inicio = localidade.IndexOf(" (");
@@ -28,7 +27,6 @@ namespace ListMed.Controllers
 
             ViewBag.servicos = new SelectList(db.Servicos, "Id", "Descricao");
             List<Clinica> clinicas = new List<Clinica>();
-            ViewBag.local = local;
             if(local == " (Cidade)")
                 clinicas = db.Clinicas.Where(c => c.Cidade.Descricao.ToUpper().Contains(localidade.ToUpper())).ToList();
             else
@@ -36,27 +34,8 @@ namespace ListMed.Controllers
             return View(clinicas);
         }
 
-        [HttpPost]
-        public JsonResult FavoritarClinica(int id)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var identity = User.Identity as ClaimsIdentity;
-                int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
-                var usuario = db.Usuarios.Find(idUsuario);
-                usuario.Clinicas.Add(db.Clinicas.Find(id));
-                db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return Json(true);
-            }
-            else
-            {
-                return Json(false);
-            }
 
-        }
-
-
+ 
         public ActionResult Detalhes(int id)
         {
             return View(db.Clinicas.Find(id));

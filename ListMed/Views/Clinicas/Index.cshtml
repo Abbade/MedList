@@ -3,16 +3,7 @@
     ViewBag.Title = "Início";
 }
 
-<script>
-    @if(ViewBag.local == " (Cidade)")
-    {
-        @:var zoom = 10;
-    }
-    else {
-        @: var zoom = 6.9;
-    }
 
-</script>
 <nav class="navbar navbar-expand-md bg-light navbar-light border-bottom shadow-sm">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar1">
         <span class="navbar-toggler-icon"></span>
@@ -46,10 +37,7 @@
             </div>
         </div>
         <div class="col-12 col-sm-12 col-md-4 hidden-sm-down">
-            <div class="google_mapa">
-                <div id="map"></div>
-            </div>
-            
+            <div id="map"></div>
         </div>
     </div>
 </div>
