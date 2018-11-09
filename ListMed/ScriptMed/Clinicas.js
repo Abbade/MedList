@@ -119,3 +119,90 @@ $(".avalia").on({
         }
     }
 });
+
+$('.coracao').on('click', function () {
+    event.preventDefault();
+    var id = parseInt($(this).parent().attr('href').substr(1));
+
+    if ($(this).hasClass('cor-coracao')) {
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'Clinicas/DesFavoritarClinica',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify({ "id": id }),
+            success: function (response) {
+                console.log(response);
+                if (response === true)
+                    $('.coracao').removeClass('cor-coracao');
+            },
+            error: function (error) { console.log(error); }
+        }).fail(function (error) { console.log(error); });
+
+    }
+    else {
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'Clinicas/FavoritarClinica',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify({ "id": id }),
+            success: function (response) {
+                console.log(response);
+                if (response === true)
+                    $('.coracao').addClass('cor-coracao');
+            },
+            error: function (error) { console.log(error); }
+        }).fail(function (error) { console.log(error); });
+    }
+
+});
+$('#avalie').on('click', function () {
+
+    var desc = $('#descAvaliacao').val();
+    var estrelas = 0;
+    var id = parseInt($(this).attr('ref'));
+    $('.avaliar_estrelas').find('.avalia').each(function (item) {
+        if ($(this).hasClass('check')) {
+            estrelas++;
+        }
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'Clinicas/AvaliarClinica',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({ "id": id, "desc": desc, "estrelas": estrelas }),
+        success: function (response) {
+
+        },
+        error: function (error) { console.log(error); }
+    }).fail(function (error) { console.log(error); });
+});
+$('.editarAvaliacao').on('click', function () {
+    $('#editAvaliacao').fadeIn();
+});
+$('#editavalie').on('click', function () {
+    var desc = $('#descAvaliacaoE').val();
+    var estrelas = 0;
+    var id = parseInt($(this).attr('ref'));
+    $('.avaliar_estrelasE').find('.avalia').each(function (item) {
+        if ($(this).hasClass('check')) {
+            estrelas++;
+        }
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'Clinicas/ReavaliarClinica',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({ "id": id, "desc": desc, "estrelas": estrelas }),
+        success: function (response) {
+
+        },
+        error: function (error) { console.log(error); }
+    }).fail(function (error) { console.log(error); });
+});

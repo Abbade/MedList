@@ -3,6 +3,7 @@ using ListMed.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -24,7 +25,7 @@ namespace ListMed.Controllers
                  local = localidade.Substring(inicio);
                 localidade = localidade.Substring(0, inicio);
             }
-
+            ViewBag.local = local;
             ViewBag.servicos = new SelectList(db.Servicos, "Id", "Descricao");
             List<Clinica> clinicas = new List<Clinica>();
             if(local == " (Cidade)")
@@ -75,6 +76,31 @@ namespace ListMed.Controllers
 
             return PartialView("_Clinicas", model);
         }
+        [HttpPost]
+        public ActionResult AvaliarClinica(int id, string desc, int estrelas)
+        {
+            var usuario = UsuarioLogado();
+            Avaliacao av = new Avaliacao();
+            av.IdUsuario = usuario.Id;
+            av.IdClinica = id;
+            av.comentario = desc;
+            av.nota = estrelas;
+            db.Avaliacoes.Add(av);
+            db.SaveChanges();
+            return RedirectToAction("Detalhes", id);
+        }
+        [HttpPost]
+        public ActionResult ReavaliarClinica(int id, string desc, int estrelas)
+        {
+            var av = db.Avaliacoes.Find(id);
+            av.comentario = desc;
+            av.nota = estrelas;
+            db.Entry(av).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Detalhes", id);
+        }
+
         public JsonResult listarEspecialidades(string nome, int [] escolhidas)
         {
             List<Autocomplete> especialidades = new List<Autocomplete>();
@@ -99,6 +125,49 @@ namespace ListMed.Controllers
             }
             return Json(especialidades);
         }
-
+        [HttpPost]
+        public JsonResult FavoritarClinica(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = User.Identity as ClaimsIdentity;
+                int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                var usuario = db.Usuarios.Find(idUsuario);
+                usuario.Clinicas.Add(db.Clinicas.Find(id));
+                db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
+        [HttpPost]
+        public JsonResult DesFavoritarClinica(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = User.Identity as ClaimsIdentity;
+                int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                var usuario = db.Usuarios.Find(idUsuario);
+                usuario.Clinicas.Remove(db.Clinicas.Find(id));
+                db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
+        public Usuario UsuarioLogado()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+            var usuario = db.Usuarios.Find(idUsuario);
+            return usuario;
+        }
+       
     }
 }

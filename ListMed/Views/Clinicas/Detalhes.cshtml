@@ -12,10 +12,8 @@
                 <a href="@Model.LinkSite" target="_blank">Visitar Site</a><br />
                 <span>Telefone 1:</span> @Html.DisplayFor(model => model.Telefone1)<br />
                 <span>Telefone 2:</span> @Html.DisplayFor(model => model.Telefone2)<br />
-
                 <span>Endereço Completo:</span> @Model.EnderecoFormatado<br />
                 <p>Serviços: </p>
-
                 @foreach (var servico in Model.Servicos)
                 {
                     <div class="chip-visualiza">
@@ -127,7 +125,33 @@
                     }
                 </div>
                 <br />
+                @if (Model.Usuarios != null && Model.Usuarios.Count > 0)
+                {
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        var identity = User.Identity as System.Security.Claims.ClaimsIdentity;
+                        int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
 
+                        if (Model.Usuarios.FirstOrDefault(a => a.Id == idUsuario) != null)
+                        {
+                            <a href="#@Model.Id"><span class="fa fa-heart coracao cor-coracao"></span></a>
+                        }
+                        else
+                        {
+                            <a href="#@Model.Id"><span class="fa fa-heart coracao"></span></a>
+                        }
+                    }
+                    else
+                    {
+                        <a href="#@Model.Id"><span class="fa fa-heart coracao"></span></a>
+                    }
+
+
+                }
+                else
+                {
+                    <a href="#@Model.Id"><span class="fa fa-heart coracao"></span></a>
+                }
             </div>
 
 
@@ -140,29 +164,69 @@
         <div class="col-md-8 offset-2">
             <h4 class="text-center">Avaliações: </h4>
             <div class="avaliacoes border">
-
             </div>
-            <!-- if for logado -->
-            <h4 class="text-center">Avalie: </h4>
-            <div class="divAvaliacao border p-4">
-                <div class="form-group">
-                    <span>Nota: </span>
-                    <span class="fa fa-star avalia" id="0"></span>
-                    <span class="fa fa-star avalia" id="1"></span>
-                    <span class="fa fa-star avalia" id="2"></span>
-                    <span class="fa fa-star avalia" id="3"></span>
-                    <span class="fa fa-star avalia" id="4"></span>
-                </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                var identity = User.Identity as System.Security.Claims.ClaimsIdentity;
+                int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                var avaliacao = Model.Avaliacoes.Where(a => a.IdUsuario == idUsuario).FirstOrDefault();
+                if (avaliacao == null)
+                {
+                    <h4 class="text-center">Avalie: </h4>
+                    <div class="divAvaliacao border p-4">
+                        <div class="form-group">
+                            <span>Nota: </span>
+                            <div class="avaliar_estrelas">
+                                <span class="fa fa-star avalia" id="0"></span>
+                                <span class="fa fa-star avalia" id="1"></span>
+                                <span class="fa fa-star avalia" id="2"></span>
+                                <span class="fa fa-star avalia" id="3"></span>
+                                <span class="fa fa-star avalia" id="4"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span for="descAvaliacao">Descrição: </span>
+                            <textarea class="form-control" id="descAvaliacao" rows="3"></textarea>
+                        </div>
+                        <div class="form-group" style="text-align: right;">
+                            <input type="button" ref="@Model.Id" class="btn btn-primary" id="avalie" value="Avalie" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-primary editarAvaliacao mt-2" style="text-align: center;">Editar Avaliação</button>
+                    <div id="editAvaliacao" style="display: none;">
+                        <h4 class="text-center">Avalie: </h4>
+                        <div class="divAvaliacao border p-4">
+                            <div class="form-group">
+                                <span>Nota: </span>
+                                <div class="avaliar_estrelasE">
+                                    <span class="fa fa-star avalia @(avaliacao.nota >= 1 ? "check" : "")" id="0"></span>
+                                    <span class="fa fa-star avalia @(avaliacao.nota >= 2 ? "check" : "")" id="1"></span>
+                                    <span class="fa fa-star avalia @(avaliacao.nota >= 3 ? "check" : "")" id="2"></span>
+                                    <span class="fa fa-star avalia @(avaliacao.nota >= 4 ? "check" : "")" id="3"></span>
+                                    <span class="fa fa-star avalia @(avaliacao.nota >= 5 ? "check" : "")" id="4"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <span for="descAvaliacao">Descrição: </span>
+                                <textarea class="form-control" id="descAvaliacaoE" rows="3">@avaliacao.comentario</textarea>
+                            </div>
+                            <div class="form-group" style="text-align: right;">
+                                <input type="button" ref="@avaliacao.Id" class="btn btn-primary" id="editavalie" value="Avalie" />
+                            </div>
+                        </div>
+                    </div>
+                }
 
-                <div class="form-group">
-                    <span for="descAvaliacao">Descrição: </span>
-                    <textarea class="form-control" id="descAvaliacao" rows="3"></textarea>
-                </div>
-                <div class="form-group" style="text-align: right;">
-                    <input type="button" class="btn btn-primary" value="Avalie" />
-                </div>
 
-            </div>
+            }
+            else
+            {
+                <p>Logue</p>
+            }
+
         </div>
     </div>
 </div>

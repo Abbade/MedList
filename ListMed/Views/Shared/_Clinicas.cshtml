@@ -9,11 +9,11 @@
                 <div class="col-sm-3  fotos align-self-center" style="z-index: 1;padding-right: 0;">
                     @if (clinica.Fotos == null)
                     {
-                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem"  />
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem"  style="width: 100%;max-height: 132px;" />
                     }
                     else if (clinica.Fotos.Count == 0)
                     {
-                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem"  />
+                        <img src="~/Content/Imagens/vazia.jpg" title="sem imagem" alt="sem imagem" style="width: 100%;max-height: 132px;"  />
                     }
                     else if (clinica.Fotos.Count == 1)
                     {
@@ -160,7 +160,7 @@
  
             console.log(locations);
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: zoom,
         center: new google.maps.LatLng(lt, lg),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
