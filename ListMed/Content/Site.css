@@ -164,8 +164,14 @@ footer {
 }
 /* mapa */
 #map {
-    height: 500px; 
+    height: 80vh;
     width: 100%;
+}
+.google_mapa {
+    position: fixed;
+    z-index: 1;
+    width: 30vw;
+    top: 15%;
 
 }
 #mapa {
@@ -196,4 +202,29 @@ footer {
 }
 .avalia{
     cursor: pointer;
+}
+@media (max-width: 923px){
+    .fotos, .maisInfos {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .google_mapa {
+        display: none;
+    }
+}
+.coracao{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    color: black;
+}
+.coracao:hover{
+    color: red;
+}
+.coracao:active {
+    color: white;
+}
+.cor-coracao{
+    color: red;
 }

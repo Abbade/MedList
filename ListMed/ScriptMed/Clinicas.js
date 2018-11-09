@@ -40,7 +40,8 @@ function listarClinicas() {
         data: JSON.stringify({ "filtros": filtros }),
  
         success: function (response) {
-            console.log("response" + response);
+            console.log("coe");
+           // refazMapa();
 
         },
         error: function (error) { console.log(error); }
@@ -118,4 +119,29 @@ $(".avalia").on({
             $('#' + i).addClass('check');
         }
     }
+});
+$('.coracao').on('click', function () {
+    var id = parseInt($(this).parent().attr('href').substr(1));
+ 
+    if ($(this).hasClass('cor-coracao')) {
+        $(this).removeClass('cor-coracao');
+    }
+    else {
+     
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'Clinicas/FavoritarClinica',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify({ "id": id }),
+            success: function (response) {
+                if (response)
+                    $(this).addClass('cor-coracao');
+
+            },
+            error: function (error) { console.log(error); }
+        }).fail(function (error) { console.log(error); });
+    }
+   
+
 });
