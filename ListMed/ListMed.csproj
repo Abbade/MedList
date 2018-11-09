@@ -172,6 +172,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="DTO\AlterarSenha.cs" />
+    <Compile Include="Migrations\201811091204025_teste.cs" />
+    <Compile Include="Migrations\201811091204025_teste.Designer.cs">
+      <DependentUpon>201811091204025_teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
@@ -513,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811081731490_usuario.resx">
       <DependentUpon>201811081731490_usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811091204025_teste.resx">
+      <DependentUpon>201811091204025_teste.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
