@@ -21,20 +21,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-.vs
-ListMed/obj
-ListMed/bin
-ListMed/[Dd]ebug/
-ListMed/[Dd]ebug/
-ListMed/[Dd]ebugPublic/
-ListMed/[Rr]elease/
-ListMed/[Rr]eleases/
-ListMed/x64/
-ListMed/x86/
-ListMed/bld/
-ListMed/[Bb]in/
-ListMed/[Oo]bj/
-ListMed/[Ll]og/
 
 # Visual Studio 2015 cache/options directory
 .vs/
