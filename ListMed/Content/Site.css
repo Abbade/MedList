@@ -50,6 +50,20 @@ footer {
     margin-top: 25%;
     
 }
+a.semEstilo:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+a.semEstilo:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+a.semEstilo:after {
+    color: #007bff;
+}
 .divFormInicio input, .divFormInicio button{
     padding: 0.7rem;
 }
@@ -61,7 +75,15 @@ footer {
 .slidecontainer {
     width: 100%;
 }
+.ordenacao {
+    font-size: 2rem !important;
+    color: #007bff;
 
+}
+    .ordenacao:after {
+
+        color: #007bff !important;
+    }
 .slider {
     -webkit-appearance: none;
     width: 100%;
