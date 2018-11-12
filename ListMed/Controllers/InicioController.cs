@@ -20,13 +20,12 @@ namespace ListMed.Controllers
 
         }
         // GET: Inicio
-        public ActionResult Index()
+        public ActionResult Index(string returnMsg)
         {
 
+            
 
-            //db.SaveChanges();
-
-            return View();
+            return View(returnMsg);
         }
 
         [HttpPost]

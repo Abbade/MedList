@@ -23,6 +23,8 @@ namespace ListMed.Models
 
         public int IdUsuario { get; set; }
 
+        public DateTime DataHora { get; set; }
+
         [ForeignKey("IdClinica")]
         public virtual Clinica Clinica { get; set; }
 

@@ -158,7 +158,7 @@ $('.coracao').on('click', function () {
     }
 
 });
-$('#avalie').on('click', function () {
+$('#avClini').on('submit', function () {
 
     var desc = $('#descAvaliacao').val();
     var estrelas = 0;
@@ -169,22 +169,14 @@ $('#avalie').on('click', function () {
         }
     });
 
-    $.ajax({
-        type: 'POST',
-        url: baseUrl + 'Clinicas/AvaliarClinica',
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        data: JSON.stringify({ "id": id, "desc": desc, "estrelas": estrelas }),
-        success: function (response) {
-
-        },
-        error: function (error) { console.log(error); }
-    }).fail(function (error) { console.log(error); });
+    var html = '<input type="hidden" name="estrelas" value="' + estrelas + '" />';
+    $('#avClini').append(html);
 });
 $('.editarAvaliacao').on('click', function () {
     $('#editAvaliacao').fadeIn();
 });
-$('#editavalie').on('click', function () {
+$('#reavClini').on('submit', function () {
+
     var desc = $('#descAvaliacaoE').val();
     var estrelas = 0;
     var id = parseInt($(this).attr('ref'));
@@ -193,16 +185,9 @@ $('#editavalie').on('click', function () {
             estrelas++;
         }
     });
+    var html = '<input type="hidden" name="estrelas" value="' + estrelas + '" />';
+    $('#reavClini').append(html);
 
-    $.ajax({
-        type: 'POST',
-        url: baseUrl + 'Clinicas/ReavaliarClinica',
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        data: JSON.stringify({ "id": id, "desc": desc, "estrelas": estrelas }),
-        success: function (response) {
 
-        },
-        error: function (error) { console.log(error); }
-    }).fail(function (error) { console.log(error); });
+    return true;
 });

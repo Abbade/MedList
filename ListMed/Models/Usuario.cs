@@ -29,6 +29,8 @@ namespace ListMed.Models
         [Required(ErrorMessage = "senha é obrigatório!")]
         public string senha { get; set; }
 
+        public byte[] Foto { get; set; }
+
         public virtual List<Avaliacao> Avaliacoes { get; set; }
 
         // clinicas que ele gosta

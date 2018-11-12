@@ -60,6 +60,7 @@ namespace ListMed.Controllers
         [HttpPost]
         public ActionResult Login(LoginUsuario dto)
         {
+            bool foto = false;
             if (!ModelState.IsValid)
                 return View(dto);
             var usuario = db.Usuarios.FirstOrDefault(u => u.email.ToUpper() == dto.Email.ToUpper());
@@ -73,10 +74,13 @@ namespace ListMed.Controllers
                 ModelState.AddModelError("Senha", "Senha incorreta");
                 return View(dto);
             }
+            if (usuario.Foto != null)
+                foto = true;
             var identity = new ClaimsIdentity(new[]
             {
                new Claim(ClaimTypes.Name, usuario.nick),
                 new Claim(ClaimTypes.Email, usuario.email),
+                new Claim("TemFoto", foto.ToString()),
                 new Claim("Id", usuario.Id.ToString())
             }, "ApplicationCookie");
 

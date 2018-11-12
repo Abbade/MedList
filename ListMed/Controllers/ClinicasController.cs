@@ -37,8 +37,9 @@ namespace ListMed.Controllers
 
 
  
-        public ActionResult Detalhes(int id)
+        public ActionResult Detalhes(int id, string returnMsg)
         {
+            ViewBag.returnMsg = returnMsg;
             return View(db.Clinicas.Find(id));
         }
         [HttpPost]
@@ -85,9 +86,12 @@ namespace ListMed.Controllers
             av.IdClinica = id;
             av.comentario = desc;
             av.nota = estrelas;
+            av.DataHora = DateTime.Now;
+
             db.Avaliacoes.Add(av);
             db.SaveChanges();
-            return RedirectToAction("Detalhes", id);
+            recalcularAvaliacao(av.IdClinica);
+            return RedirectToAction("Detalhes", new { id = id , returnMsg = "Clinica avaliada com sucesso!"});
         }
         [HttpPost]
         public ActionResult ReavaliarClinica(int id, string desc, int estrelas)
@@ -95,12 +99,26 @@ namespace ListMed.Controllers
             var av = db.Avaliacoes.Find(id);
             av.comentario = desc;
             av.nota = estrelas;
+            av.DataHora = DateTime.Now;
             db.Entry(av).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
 
-            return RedirectToAction("Detalhes", id);
-        }
+            recalcularAvaliacao(av.IdClinica);
 
+
+
+            return RedirectToAction("Detalhes", new { id = av.IdClinica, returnMsg = "Clinica avaliada com sucesso!" });
+        }
+        public void recalcularAvaliacao(int id)
+        {
+            var clinica = db.Clinicas.Find(id);
+            int valorAvalicoes = clinica.Avaliacoes.Sum(a => a.nota != null ? (int)a.nota : 0);
+            int totalAvaliacaoClinica = clinica.Avaliacoes.Count(a => a.nota != null);
+            double avaliacaoNova = valorAvalicoes / totalAvaliacaoClinica;
+            clinica.avaliacao = avaliacaoNova;
+            db.Entry(clinica).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
         public JsonResult listarEspecialidades(string nome, int [] escolhidas)
         {
             List<Autocomplete> especialidades = new List<Autocomplete>();

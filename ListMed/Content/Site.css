@@ -6,6 +6,9 @@
 body {
     margin-bottom: 100px;
 }
+.inicio {
+    padding-top: 4rem;
+}
 footer {
     position: absolute;
     bottom: 0;
@@ -221,6 +224,9 @@ footer {
 .cor-coracao {
     color: red;
 }
+.btn-entre {
+    float: right;
+}
 @media (max-width: 923px) {
     .fotos, .maisInfos {
         display: none;
@@ -230,5 +236,8 @@ footer {
 @media (max-width: 768px) {
     .google_mapa {
         display: none;
+    }
+    .btn-entre {
+        float: left;
     }
 }

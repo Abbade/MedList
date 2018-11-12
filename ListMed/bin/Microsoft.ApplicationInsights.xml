@@ -85,6 +85,11 @@
             Disposing the channel.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.InMemoryChannel.Dispose(System.Boolean)">
+            <summary>
+            Dispose the channel if not already disposed.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Channel.InMemoryTransmitter">
             <summary>
             A transmitter that will immediately send telemetry over HTTP. 
@@ -147,6 +152,12 @@
             Gets the context associated with this telemetry instance.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.Channel.ITelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strongly
+            typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.Channel.ITelemetry.Sequence">
             <summary>
             Gets or sets the value that defines absolute order of the telemetry item.
@@ -172,6 +183,11 @@
             and can be modified independently.
             </summary>
             <returns>The cloned object.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Channel.ITelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <summary>
+            Writes serialization info about the data class of the implementing type using the given <see cref="T:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter"/>
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Channel.ITelemetryChannel">
             <summary>
@@ -365,6 +381,11 @@
             Gets the context associated with the current telemetry item.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.AvailabilityTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.AvailabilityTelemetry.Properties">
             <summary>
             Gets a dictionary of application-defined property names and values providing additional information about this availability test run.
@@ -387,6 +408,9 @@
             Deeply clones an  <see cref="T:Microsoft.ApplicationInsights.DataContracts.AvailabilityTelemetry"/> object.
             </summary>
             <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.AvailabilityTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.AvailabilityTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
@@ -442,6 +466,11 @@
         <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Context">
             <summary>
             Gets the context associated with the current telemetry item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strongly typed object.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Id">
@@ -517,9 +546,9 @@
             Should be 100/n where n is an integer. <a href="https://go.microsoft.com/fwlink/?linkid=832969">Learn more</a>
             </summary>
         </member>
-        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.OperationDetails">
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.MetricExtractorInfo">
             <summary>
-            Gets the dependency operation details, if any.
+            Gets or sets the MetricExtractorInfo.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.DeepClone">
@@ -546,14 +575,12 @@
             <param name="key">The key to store the detail against.</param>
             <param name="detail">Detailed information collected by the tracked operation.</param>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
             Sanitizes the properties based on constraints.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.DataContracts.DependencyTelemetry.ClearOperationDetails">
-            <summary>
-            Clears any stored operational data for the dependency operation, if any.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.EventTelemetry">
@@ -585,6 +612,11 @@
         <member name="P:Microsoft.ApplicationInsights.DataContracts.EventTelemetry.Context">
             <summary>
             Gets the context associated with the current telemetry item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.EventTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.EventTelemetry.Name">
@@ -621,6 +653,36 @@
             Sanitizes the properties based on constraints.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.EventTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo">
+            <summary>
+            Wrapper class for <see cref="P:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo.ExceptionDetails"/> that lets user gets/sets TypeName and Message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo.#ctor(System.Int32,System.Int32,System.String,System.String,System.Boolean,System.String,System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.DataContracts.StackFrame})">
+            <summary>
+            Constructs the instance of <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo"/>.
+            </summary>
+            <param name="id">Exception id.</param>
+            <param name="outerId">Parent exception's id.</param>
+            <param name="typeName">Type name for the exception.</param>
+            <param name="message">Exception message.</param>
+            <param name="hasFullStack">Indicates that this exception has full stack information.</param>
+            <param name="stack">Exception's stack trace.</param>
+            <param name="parsedStack">Exception's stack.</param>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo.TypeName">
+            <summary>
+            Gets or sets type name of the underlying <see cref="T:System.Exception"/> that this object represents.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo.Message">
+            <summary>
+            Gets or sets message name of the underlying <see cref="T:System.Exception"/> that this object represents.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.ExceptionHandledAt">
             <summary>
             This enumeration is used by ExceptionTelemetry to identify if and where exception was handled.
@@ -641,6 +703,41 @@
             Exception was handled by some platform handlers.
             </summary>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo">
+            <summary>
+            Wrapper class for <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionData"/> that lets user provide exception data without having the actual Exception object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo.#ctor(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo},System.Nullable{Microsoft.ApplicationInsights.DataContracts.SeverityLevel},System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Double})">
+            <summary>
+            Constructs the instance of <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo.ExceptionDetailsInfoList">
+            <summary>
+            Gets a list of <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo"/> to modify as needed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo.SeverityLevel">
+            <summary>
+            Gets or sets Exception severity level.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo.ProblemId">
+            <summary>
+            Gets or sets problem id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo.Properties">
+            <summary>
+            Gets or sets properties collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionInfo.Measurements">
+            <summary>
+            Gets or sets measurements collection.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry">
             <summary>
             Telemetry type used to track exceptions.
@@ -657,6 +754,16 @@
             Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry"/> class with empty properties.
             </summary>
             <param name="exception">Exception instance.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.#ctor(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo},System.Nullable{Microsoft.ApplicationInsights.DataContracts.SeverityLevel},System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Double})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry"/> class.
+            </summary>
+            <param name="exceptionDetailsInfoList">Exception info.</param>
+            <param name="severityLevel">Severity level.</param>
+            <param name="problemId">Problem id.</param>
+            <param name="properties">Properties.</param>
+            <param name="measurements">Measurements.</param>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.#ctor(Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry)">
             <summary>
@@ -677,6 +784,11 @@
         <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.Context">
             <summary>
             Gets the context associated with the current telemetry item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.ProblemId">
@@ -705,6 +817,12 @@
             <a href="https://go.microsoft.com/fwlink/?linkid=525722#properties">Learn more</a>
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.ExceptionDetailsInfoList">
+            <summary>
+            Gets the list of <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo"/>. User can modify the contents of individual object, but
+            not the list itself.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.Properties">
             <summary>
             Gets a dictionary of application-defined property names and values providing additional information about this exception.
@@ -727,6 +845,9 @@
             Deeply clones a <see cref="T:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry"/> object.
             </summary>
             <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry.SetParsedStack(System.Diagnostics.StackFrame[])">
             <summary>
@@ -844,7 +965,10 @@
             <summary>
             Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.InnerExceptionCountExceededException"/> class with serialized data.
             </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown. </param><param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination. </param><exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception><exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown. </param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination. </param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.ISupportMetrics">
             <summary>
@@ -955,6 +1079,11 @@
             Gets the context associated with the current telemetry item.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.MetricTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.MetricTelemetry.MetricNamespace">
             <summary>
             Gets or sets the name of the metric.
@@ -1007,10 +1136,133 @@
             </summary>
             <returns>A cloned instance.</returns>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.MetricTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.MetricTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
             Sanitizes the properties based on constraints.
             </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry">
+            <summary>
+            Telemetry type used to track page load performance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry"/> class with the
+            specified <paramref name="pageName"/>.
+            </summary>
+            <exception cref="T:System.ArgumentException">The <paramref name="pageName"/> is null or empty string.</exception>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.#ctor(Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry"/> class by cloning an existing instance.
+            </summary>
+            <param name="source">Source instance of <see cref="T:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry"/> to clone from.</param>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Timestamp">
+            <summary>
+            Gets or sets date and time when event was recorded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Sequence">
+            <summary>
+            Gets or sets the value that defines absolute order of the telemetry item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Context">
+            <summary>
+            Gets the context associated with the current telemetry item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Id">
+            <summary>
+            Gets or sets page view ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Name">
+            <summary>
+            Gets or sets the name of the page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Url">
+            <summary>
+            Gets or sets the page view Uri.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Duration">
+            <summary>
+            Gets or sets the page view duration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.DomProcessing">
+            <summary>
+            Gets or sets the page DOM processing time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.PerfTotal">
+            <summary>
+            Gets or sets the page loading total time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.NetworkConnect">
+            <summary>
+            Gets or sets the page load network time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.SentRequest">
+            <summary>
+            Gets or sets the page load send request time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.ReceivedResponse">
+            <summary>
+            Gets or sets the page load recieve response duration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Metrics">
+            <summary>
+            Gets a dictionary of custom defined metrics.
+            <a href="https://go.microsoft.com/fwlink/?linkid=525722#properties">Learn more</a>
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Properties">
+            <summary>
+            Gets a dictionary of application-defined property names and values providing additional information about this page view.
+            <a href="https://go.microsoft.com/fwlink/?linkid=525722#properties">Learn more</a>
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Microsoft#ApplicationInsights#DataContracts#ISupportSampling#SamplingPercentage">
+            <summary>
+            Gets or sets data sampling percentage (between 0 and 100).
+            Should be 100/n where n is an integer. <a href="https://go.microsoft.com/fwlink/?linkid=832969">Learn more</a>
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.DeepClone">
+            <summary>
+            Deeply clones a <see cref="T:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry"/> object.
+            </summary>
+            <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
+            <summary>
+            Sanitizes the properties based on constraints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewPerformanceTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry">
             <summary>
@@ -1054,6 +1306,11 @@
         <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry.Context">
             <summary>
             Gets the context associated with the current telemetry item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry.Id">
@@ -1100,6 +1357,9 @@
             </summary>
             <returns>A cloned instance.</returns>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.PageViewTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
             Sanitizes the properties based on constraints.
@@ -1145,6 +1405,11 @@
             Gets the context associated with the current telemetry item.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.Value">
             <summary>
             Gets or sets the counter value.
@@ -1175,6 +1440,9 @@
             Deeply clones a <see cref="T:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry"/> object.
             </summary>
             <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.PerformanceCounterTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
@@ -1222,6 +1490,11 @@
         <member name="P:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.Context">
             <summary>
             Gets the object that contains contextual information about the application at the time when it handled the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.Id">
@@ -1281,11 +1554,19 @@
             Gets or sets the source for the request telemetry object. This often is a hashed instrumentation key identifying the caller.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.MetricExtractorInfo">
+            <summary>
+            Gets or sets the MetricExtractorInfo.
+            </summary>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.DeepClone">
             <summary>
             Deeply clones a <see cref="T:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry"/> object.
             </summary>
             <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.RequestTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
@@ -1341,6 +1622,11 @@
             Gets the <see cref="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext"/> of the application when the session state was recorded.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.SessionStateTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.SessionStateTelemetry.Sequence">
             <summary>
             Gets or sets the value that defines absolute order of the telemetry item.
@@ -1361,6 +1647,9 @@
             <summary>
             Sanitizes this telemetry instance to ensure it can be accepted by the Application Insights.
             </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.SessionStateTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.SeverityLevel">
             <summary>
@@ -1390,6 +1679,16 @@
         <member name="F:Microsoft.ApplicationInsights.DataContracts.SeverityLevel.Critical">
             <summary>
             Critical severity level.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.DataContracts.StackFrame">
+            <summary>
+            Wrapper class for <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.StackFrame"/> for API exposure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.StackFrame.#ctor(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Constructs an instance.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.DataContracts.TelemetryContext">
@@ -1478,6 +1777,35 @@
             Gets a dictionary of context tags.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.TelemetryContext.TryGetRawObject(System.String,System.Object@)">
+            <summary>
+            Returns the raw object with the given key.        
+            Objects retrieved here are not automatically serialized and sent to the backend.
+            They are shared (i.e not cloned) if multiple sinks are configured, so sinks should treat them as read-only.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <param name="rawObject">When this method returns, contains the object that has the specified key, or the default value of the type if the operation failed.</param>
+            <returns>true if the key was found; otherwise, false.</returns>
+            <remarks>
+            This method is not thread-safe. Objects should be stored from Collectors or TelemetryInitializers that are run synchronously.
+            </remarks>        
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.TelemetryContext.StoreRawObject(System.String,System.Object,System.Boolean)">
+            <summary>
+            Stores the raw object against the key specified.
+            Use this to store raw objects from data collectors so that TelemetryInitializers can access
+            them to extract additional details to enrich telemetry.
+            Objects stored through this method are not automatically serialized and sent to the backend.
+            They are shared (i.e not cloned) if multiple sinks are configured, so sinks should treat them as read-only.
+            </summary>
+            <param name="key">The key to store the object against.</param>
+            <param name="rawObject">Object to be stored.</param>
+            <param name="keepForInitializationOnly">Boolean flag indicating if this object should be made available only during TelemetryInitializers.
+            If set to true, then the object will not accessible in TelemetryProcessors and TelemetryChannel.</param>
+            <remarks>
+            This method is not thread-safe. Objects should be stored from Collectors or TelemetryInitializers that are run synchronously.
+            </remarks>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.TelemetryContext.Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext,System.String)">
             <summary>
             Initialize this instance's Context properties with the values from another TelemetryContext.
@@ -1528,6 +1856,11 @@
             Gets the context associated with the current telemetry item.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.DataContracts.TraceTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.DataContracts.TraceTelemetry.Message">
             <summary>
             Gets or sets the message text. For example, the text that would normally be written to a log file line.
@@ -1555,6 +1888,9 @@
             Deeply clones a <see cref="T:Microsoft.ApplicationInsights.DataContracts.TraceTelemetry"/> object.
             </summary>
             <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.DataContracts.TraceTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="M:Microsoft.ApplicationInsights.DataContracts.TraceTelemetry.Microsoft#ApplicationInsights#Channel#ITelemetry#Sanitize">
             <summary>
@@ -1601,6 +1937,16 @@
             Checks to see if debugger is attached.
             </summary>
             <returns>true if debugger is attached.</returns>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.IExtension">
+            <summary>
+            Interface for defining strongly typed extensions to telemetry types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.IExtension.DeepClone">
+            <summary>
+            Deep clones the members of the class.
+            </summary>
         </member>
         <member name="F:Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationIdHelper.Format">
             <summary>
@@ -1892,6 +2238,12 @@
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
+            <summary>
+            Partial class to add the Lazy instantiation of ConcurrentDictionary.
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ContextTagKeys">
             <summary>
@@ -1902,15 +2254,30 @@
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.EventData">
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
+            <summary>
+            Partial class to add the Lazy instantiation of ConcurrentDictionary.
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionData">
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
+            <summary>
+             Partial class to add the Lazy instantiation of ConcurrentDictionary.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionDetails">
@@ -1919,6 +2286,9 @@
             </summary>
             <summary>
             Additional implementation for ExceptionDetails.
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionDetails.CreateWithoutStackInfo(System.Exception,Microsoft.ApplicationInsights.Extensibility.Implementation.External.ExceptionDetails)">
@@ -1930,20 +2300,35 @@
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.MetricData">
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.PageViewData">
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.PageViewPerfData">
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.PerformanceCounterData">
@@ -1955,10 +2340,22 @@
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.RequestData">
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
+            </summary>
+            <summary>
+            Partial class to implement ISerializableWithWriter
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.SessionStateData">
@@ -1970,6 +2367,9 @@
             <summary>
             Partial class to add the EventData attribute and any additional customizations to the generated type.
             </summary>
+            <summary>
+            Partial class to impelement ISerializableWithWriter
+            </summary>    
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.External.Tags">
             <summary>
@@ -2051,6 +2451,51 @@
             a batch of unsigned 64 bit random numbers.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteStartObject">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteStartObject(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Nullable{System.Boolean})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Nullable{System.Double})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Nullable{System.TimeSpan})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Nullable{System.DateTimeOffset})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Collections.Generic.IList{System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Collections.Generic.IList{Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Collections.Generic.IDictionary{System.String,System.Double})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteProperty(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializationWriter.WriteEndObject">
+            <inheritdoc/>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer">
             <summary>
             Serializes and compress the telemetry items into a JSON string. Compression will be done using GZIP, for Windows Phone 8 compression will be disabled because there
@@ -2118,24 +2563,16 @@
             Creates a GZIP compression stream that wraps <paramref name="stream"/>. For windows phone 8.0 it returns <paramref name="stream"/>. 
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.CopyGlobalPropertiesIfExist(Microsoft.ApplicationInsights.DataContracts.TelemetryContext,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Copies GlobalProperties to the target, avoiding accessing the public accessor GlobalProperties
+            unless needed, to avoid the penality of ConcurrentDictionary instantiation. 
+            </summary>        
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.SeializeToStream(System.Collections.Generic.IEnumerable{Microsoft.ApplicationInsights.Channel.ITelemetry},System.IO.TextWriter)">
             <summary>
             Serializes <paramref name="telemetryItems"/> and write the response to <paramref name="streamWriter"/>.
             </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonSerializer.SerializeAvailability(Microsoft.ApplicationInsights.DataContracts.AvailabilityTelemetry,Microsoft.ApplicationInsights.Extensibility.Implementation.JsonWriter)">
-            <summary>
-            Serializes this object in JSON format.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonWriter.WritePropertyName(System.String)">
-            <summary>
-            Writes the specified property name enclosed in double quotation marks followed by a colon.
-            </summary>
-            <remarks>
-            When this method is called multiple times, the second call after <see cref="M:Microsoft.ApplicationInsights.Extensibility.Implementation.JsonWriter.WriteStartObject"/>
-            and all subsequent calls will write a coma before the name.
-            </remarks>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.LocationContext">
             <summary>
@@ -2297,6 +2734,11 @@
             Gets or sets the value that defines absolute order of the telemetry item.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationTelemetry.Extension">
+            <summary>
+            Gets or sets gets the extension used to extend this telemetry instance using new strong typed object.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationTelemetry.BeginTimeInTicks">
             <summary>  
             Gets or sets Time in StopWatch ticks representing begin time of the operation. Used internally
@@ -2313,6 +2755,9 @@
             Deeply clones a <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationTelemetry"/> object.
             </summary>
             <returns>A cloned instance.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationTelemetry.SerializeData(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <inheritdoc/>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.OperationTelemetry.GenerateId">
             <summary>
@@ -2476,6 +2921,11 @@
             Keyword for operations (Start/Stop).
             </summary>
         </member>
+        <member name="F:Microsoft.ApplicationInsights.Extensibility.Implementation.RichPayloadEventSource.Keywords.PageViewPerformance">
+            <summary>
+            Keyword for page view performance.
+            </summary>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.SdkVersionUtils.GetSdkVersion(System.String)">
             <summary>
             Builds a string representing file version of the assembly with added prefix
@@ -2535,6 +2985,11 @@
             Releases unmanaged and - optionally - managed resources.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimer.Dispose(System.Boolean)">
+            <summary>
+            Disposes the timer.
+            </summary>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TaskTimerInternal">
             <summary>
             Runs a task after a certain delay and log any error.
@@ -2576,6 +3031,11 @@
             Log exception thrown by outer code.
             </summary>
             <param name="exception">Exception to log.</param>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.Telemetry.IsDeveloperMode(Microsoft.ApplicationInsights.Channel.ITelemetry)">
+            <summary>
+            Inspect if <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> Properties contains 'DeveloperMode' and return it's boolean value.
+            </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.Telemetry.NormalizeInstrumentationKey(System.String)">
             <summary>
@@ -2721,9 +3181,14 @@
             Logs the information when there operation to track is null.
             </summary>
         </member>
-        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.CoreEventSource.InvalidOperationToStopError(System.String,System.String)">
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.CoreEventSource.InvalidOperationToStopError(System.String)">
             <summary>
             Logs the information when there operation to stop does not match the current operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.CoreEventSource.InvalidOperationToStopDetails(System.String,System.String)">
+            <summary>
+            Logs the detais when there operation to stop does not match the current operation.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.CoreEventSource.Keywords">
@@ -3525,6 +3990,96 @@
         <member name="P:Microsoft.ApplicationInsights.Extensibility.IOperationHolder`1.Telemetry">
             <summary>
             Gets Telemetry item of interest that is created when StartOperation function of ClientExtensions is invoked.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter">
+            <summary>
+            Interface for defining objects which can be serialized with a given <see cref="T:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter.Serialize(Microsoft.ApplicationInsights.Extensibility.ISerializationWriter)">
+            <summary>
+            Writes serialization info about the class using the given <see cref="T:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter">
+            <summary>
+            The interface for defining writers capable of serializing data into various formats.    
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.String)">
+            <summary>
+            Writes name and value for a string field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Nullable{System.Double})">
+            <summary>
+            Writes name and value for a double field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Writes name and value for a int field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Writes name and value for a boolean field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Nullable{System.TimeSpan})">
+            <summary>
+            Writes name and value for a TimeSpan field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Writes name and value for a DateTimeOffset field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter)">
+            <summary>
+            Writes name and value for a ISerializableWithWriter field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter)">
+            <summary>
+            Writes value ISerializableWithWriter field
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Writes name and values for a IList field of strings
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Collections.Generic.IList{Microsoft.ApplicationInsights.Extensibility.ISerializableWithWriter})">
+            <summary>
+            Writes name and values for a IList field of objects implementing ISerializableWithWriter
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Writes name and value for a IDictionary field with string,string as key,value
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteProperty(System.String,System.Collections.Generic.IDictionary{System.String,System.Double})">
+            <summary>
+            Writes name and value for a IDictionary field with string,string as key,value
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteStartObject(System.String)">
+            <summary>
+            Marks beginning of a complex object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteStartObject">
+            <summary>
+            Marks beginning of a complex object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.Extensibility.ISerializationWriter.WriteEndObject">
+            <summary>
+            Marks ending of a complex object.
             </summary>
         </member>
         <member name="T:Microsoft.ApplicationInsights.Extensibility.ITelemetryInitializer">
@@ -7033,8 +7588,8 @@
             
               // Extract tracing context from the message before processing it
               // Note that some protocols may define how Activity should be serialized into the message,
-              // and some client SDKs implemeting them may provide Extract method.
-              // For other protocols/libraries, serialization has to be agreed between procuder and consumer
+              // and some client SDKs implementing them may provide Extract method.
+              // For other protocols/libraries, serialization has to be agreed between producer and consumer
               // and Inject/Extract pattern to be implemented
               var activity = message.ExtractActivity();
             
@@ -7049,7 +7604,7 @@
             <remarks><para>Activity represents tracing context; it contains correlation identifiers and extended properties that are propagated to external calls.
             See <a href="https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md"/> for more details.</para>
             <para>When Activity instance is passed to StartOperation, it is expected that Activity has ParentId (if it was provided by upstream service), but has not been started yet.
-            It may also have additional Tags and Baggage to augument telemetry.</para>
+            It may also have additional Tags and Baggage to augment telemetry.</para>
             </remarks>
             <typeparam name="T">Type of the telemetry item.</typeparam>
             <param name="telemetryClient">Telemetry client object.</param>
