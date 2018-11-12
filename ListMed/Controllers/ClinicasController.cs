@@ -114,7 +114,7 @@ namespace ListMed.Controllers
             var clinica = db.Clinicas.Find(id);
             int valorAvalicoes = clinica.Avaliacoes.Sum(a => a.nota != null ? (int)a.nota : 0);
             int totalAvaliacaoClinica = clinica.Avaliacoes.Count(a => a.nota != null);
-            double avaliacaoNova = valorAvalicoes / totalAvaliacaoClinica;
+            double avaliacaoNova = (double) valorAvalicoes / totalAvaliacaoClinica;
             clinica.avaliacao = avaliacaoNova;
             db.Entry(clinica).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
