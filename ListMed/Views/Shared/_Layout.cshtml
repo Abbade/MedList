@@ -19,7 +19,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="~/Inicio">MedList</a>
                     </li>
-                    @if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() != "INICIO" && (ViewContext.RouteData.Values["action"].ToString().ToUpper() != "INDEX" ))
+                    @if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() != "INICIO")
                     {
                         <li class="nav-item">
                             <form action="~/Clinicas" method="get" class="form_consultaClinica">
