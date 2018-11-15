@@ -18,6 +18,7 @@ namespace ListMed.Models
             Avaliacoes = new List<Avaliacao>();
             Fotos = new List<Foto>();
             Usuarios = new List<Usuario>();
+            TelefonesClinicas = new List<TelefonesClinica>();
         }
         [Key]
         public int Id { get; set; }
@@ -41,6 +42,7 @@ namespace ListMed.Models
 
         public string EnderecoFormatado { get; set; }
 
+        [Range(0, 5)]
         public double avaliacao { get; set; }
 
         public decimal? PrecoConsulta { get; set; }
@@ -58,11 +60,7 @@ namespace ListMed.Models
 
         public int? IdBairro { get; set; }
 
-        [StringLength(17)]
-        public string Telefone1 { get; set; }
-
-        [StringLength(17)]
-        public string Telefone2 { get; set; }
+        public virtual List<TelefonesClinica> TelefonesClinicas { get; set; }
 
         public virtual List<Avaliacao> Avaliacoes { get; set; }
 

@@ -47,7 +47,7 @@ namespace ListMed.Controllers
         {
             List<Clinica> model = new List<Clinica>();
 
-            if(filtros.localidade != null)
+            if(!string.IsNullOrEmpty(filtros.localidade))
             {
                 int inicio = filtros.localidade.IndexOf(" (");
                 int fim = filtros.localidade.IndexOf(")");
@@ -62,17 +62,26 @@ namespace ListMed.Controllers
                     model = db.Clinicas.Where(c => c.Cidade.Descricao.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null)) ).ToList();
                 else
                     model = db.Clinicas.Where(c => c.Estado.Descricao.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null ))).ToList();
-                if(filtros.servico > 0)
-                {
-                    model = model.Where(a => a.Servicos.Any(s => s.Id == filtros.servico)).ToList();
-                }
-                if(filtros.especialidades != null && filtros.especialidades.Count > 0)
-                {
-                    model = model.Where(m => m.Especialidades.Any(a => filtros.especialidades.Contains(a.Id))).ToList();
-                }
+
+
 
             }
+            else
+            {
+                var identity = User.Identity as ClaimsIdentity;
+                int idUsuario = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+                model = db.Clinicas.Where(c => c.Usuarios.Any(u => u.Id == idUsuario)).ToList();
 
+
+            }
+            if (filtros.servico > 0)
+            {
+                model = model.Where(a => a.Servicos.Any(s => s.Id == filtros.servico)).ToList();
+            }
+            if (filtros.especialidades != null && filtros.especialidades.Count > 0)
+            {
+                model = model.Where(m => m.Especialidades.Any(a => filtros.especialidades.Contains(a.Id))).ToList();
+            }
 
 
             return PartialView("_Clinicas", model);

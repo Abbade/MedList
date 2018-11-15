@@ -176,6 +176,11 @@
     <Compile Include="Migrations\201811112214405_fotoUsuario.Designer.cs">
       <DependentUpon>201811112214405_fotoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811150238552_tel1n.cs" />
+    <Compile Include="Migrations\201811150238552_tel1n.Designer.cs">
+      <DependentUpon>201811150238552_tel1n.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TelefonesClinica.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
@@ -523,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811112214405_fotoUsuario.resx">
       <DependentUpon>201811112214405_fotoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811150238552_tel1n.resx">
+      <DependentUpon>201811150238552_tel1n.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

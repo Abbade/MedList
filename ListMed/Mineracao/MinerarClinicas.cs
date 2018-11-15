@@ -38,6 +38,7 @@ namespace ListMed.Mineracao
                 foreach(var clinica in clinicas.results)
                 {
                     Clinica c = new Clinica();
+                    string tel1 = "", tel2 = "";
                     var cliAux = db.Clinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
                     if (cliAux == null)
                     {
@@ -46,7 +47,7 @@ namespace ListMed.Mineracao
                         c.Lt = clinica.geometry.location.lat.ToString();
                         c.Lg = clinica.geometry.location.lng.ToString();
                         c.avaliacao = clinica.rating;
-                        c.EnderecoFormatado = clinica.formatted_address;
+                        c.EnderecoFormatado = clinica.formatted_address.Replace("Brazil", "Brasil"); ;
                         c.IdEstado = 1;
                         HttpResponseMessage response1 = client.GetAsync("/maps/api/place/details/json?placeid=" + clinica.place_id + "&fields=formatted_phone_number,address_components,website,photo&key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8").Result;
                         string retorno1 = "";
@@ -71,8 +72,8 @@ namespace ListMed.Mineracao
                                     c.IdBairro = bairro.Id;
                             }
                             c.LinkSite = aclinica.result.website;
-                            c.Telefone1 = aclinica.result.formatted_phone_number;
-                            c.Telefone2 = aclinica.result.international_phone_number;
+                           tel1= aclinica.result.formatted_phone_number;
+                            tel2 = aclinica.result.international_phone_number;
 
                         }
 
@@ -81,6 +82,11 @@ namespace ListMed.Mineracao
                         {
                             if (c.IdBairro != null && c.IdCidade != null && c.IdBairro > 0 && c.IdCidade > 0)
                             {
+                                db.SaveChanges();
+                                if(!string.IsNullOrEmpty(tel1))
+                                    db.TelefonesClinicas.Add(new TelefonesClinica { Numero = tel1, IdClinica = c.Id });
+                                if (!string.IsNullOrEmpty(tel2))
+                                    db.TelefonesClinicas.Add(new TelefonesClinica { Numero = tel2, IdClinica = c.Id });
                                 db.SaveChanges();
                                 if (clinica.photos != null && clinica.photos.Count > 0)
                                 {
@@ -93,6 +99,7 @@ namespace ListMed.Mineracao
                                         f.IdClinica = c.Id;
                                         db.Fotos.Add(f);
                                         db.SaveChanges();
+                                        
                                     }
                                 }
                             }
@@ -116,6 +123,7 @@ namespace ListMed.Mineracao
                     clinicas = JsonConvert.DeserializeObject<retornoMineracao>(retorno);
                     foreach (var clinica in clinicas.results)
                     {
+                        string telcli1 = "", telcli2 = "";
                         Clinica c = new Clinica();
                         var cliAux = db.Clinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
                         if (cliAux == null)
@@ -125,7 +133,7 @@ namespace ListMed.Mineracao
                             c.Lt = clinica.geometry.location.lat.ToString();
                             c.Lg = clinica.geometry.location.lng.ToString();
                             c.avaliacao = clinica.rating;
-                            c.EnderecoFormatado = clinica.formatted_address;
+                            c.EnderecoFormatado = clinica.formatted_address.Replace("Brazil", "Brasil");
                             c.IdEstado = 1;
                             HttpResponseMessage response1 = client.GetAsync("/maps/api/place/details/json?placeid=" + clinica.place_id + "&fields=formatted_phone_number,address_components,website,photo&key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8").Result;
                             string retorno1 = "";
@@ -150,8 +158,8 @@ namespace ListMed.Mineracao
                                         c.IdBairro = bairro.Id;
                                 }
                                 c.LinkSite = aclinica.result.website;
-                                c.Telefone1 = aclinica.result.formatted_phone_number;
-                                c.Telefone2 = aclinica.result.international_phone_number;
+                                telcli1 = aclinica.result.formatted_phone_number;
+                                telcli2 = aclinica.result.international_phone_number;
 
                             }
 
@@ -160,6 +168,11 @@ namespace ListMed.Mineracao
                             {
                                 if (c.IdBairro != null && c.IdCidade != null && c.IdBairro > 0 && c.IdCidade > 0)
                                 {
+                                    db.SaveChanges();
+                                    if (!string.IsNullOrEmpty(telcli1))
+                                        db.TelefonesClinicas.Add(new TelefonesClinica { Numero = telcli1, IdClinica = c.Id });
+                                    if (!string.IsNullOrEmpty(telcli2))
+                                        db.TelefonesClinicas.Add(new TelefonesClinica { Numero = telcli2, IdClinica = c.Id });
                                     db.SaveChanges();
                                     if (clinica.photos != null && clinica.photos.Count > 0)
                                     {
