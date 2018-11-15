@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201811150238552_tel1n.Designer.cs">
       <DependentUpon>201811150238552_tel1n.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811150315414_nullbairro.cs" />
+    <Compile Include="Migrations\201811150315414_nullbairro.Designer.cs">
+      <DependentUpon>201811150315414_nullbairro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\TelefonesClinica.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
@@ -531,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811150238552_tel1n.resx">
       <DependentUpon>201811150238552_tel1n.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811150315414_nullbairro.resx">
+      <DependentUpon>201811150315414_nullbairro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

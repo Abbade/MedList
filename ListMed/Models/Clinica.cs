@@ -58,7 +58,7 @@ namespace ListMed.Models
 
         public int? IdCidade { get; set; }
 
-        public int? IdBairro { get; set; }
+        public Nullable<int> IdBairro { get; set; }
 
         public virtual List<TelefonesClinica> TelefonesClinicas { get; set; }
 

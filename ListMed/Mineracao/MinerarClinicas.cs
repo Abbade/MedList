@@ -113,7 +113,7 @@ namespace ListMed.Mineracao
 
                     }
 
-
+                    c = null;
                 }
                 string proxPag = clinicas.next_page_token;
                 for(int i = 0; i < 40; i++)
