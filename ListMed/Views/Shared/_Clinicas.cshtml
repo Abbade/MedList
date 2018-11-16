@@ -24,7 +24,25 @@
                 <div class="col-sm-6 col-md-6 col-12 border-left  border-right">
                     <div class="card-body">
                         <b>@clinica.NomeFantasia</b><br />
-                        <small>Telefone(s): @clinica.Telefone1 @(clinica.Telefone2 != null ? ", " + clinica.Telefone2 : "")</small><br />
+
+                        @if (clinica.TelefonesClinicas.Count > 0)
+                        {
+                            <small>Telefone(s): </small>
+                            for (int i = 0; i < clinica.TelefonesClinicas.Count; i++)
+                            {
+                                if (i < clinica.TelefonesClinicas.Count - 1)
+                                {
+                                    <small>@clinica.TelefonesClinicas[i].Numero,</small>
+                                }
+                                else
+                                {
+                                    <small>@clinica.TelefonesClinicas[i].Numero</small><br />
+                                }
+
+                            }
+                        }
+
+
                         <small>Endereço: @clinica.EnderecoFormatado</small>
                     </div>
 

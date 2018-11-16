@@ -7,17 +7,15 @@ using System.Web;
 
 namespace ListMed.Models
 {
-    [Table("Clinica")]
-    public class Clinica
+    [Table("AmostraClinica")]
+    public class AmostraClinica
     {
-        public Clinica()
+        public AmostraClinica()
         {
 
             Servicos = new List<Servico>();
             Especialidades = new List<Especialidade>();
-            Avaliacoes = new List<Avaliacao>();
             Fotos = new List<Foto>();
-            Usuarios = new List<Usuario>();
             TelefonesClinicas = new List<TelefonesClinica>();
         }
         [Key]
@@ -41,15 +39,15 @@ namespace ListMed.Models
         public string EnderecoFormatado { get; set; }
 
         [Range(0, 5)]
-        public double avaliacao { get; set; }
+        public double? avaliacao { get; set; }
 
         public decimal? PrecoConsulta { get; set; }
 
         public decimal? PrecoExame { get; set; }
 
-        public TimeSpan HoraAbertura { get; set; }
+        public TimeSpan? HoraAbertura { get; set; }
 
-        public TimeSpan HoraFechamento { get; set; }
+        public TimeSpan? HoraFechamento { get; set; }
 
         public int? IdEstado { get; set; }
 
@@ -60,7 +58,6 @@ namespace ListMed.Models
 
         public virtual List<TelefonesClinica> TelefonesClinicas { get; set; }
 
-        public virtual List<Avaliacao> Avaliacoes { get; set; }
 
         [ForeignKey("IdEstado")]
         public virtual Estado Estado { get; set; }
@@ -70,14 +67,12 @@ namespace ListMed.Models
 
         [ForeignKey("IdBairro")]
         public virtual Bairro Bairro { get; set; }
-        
+
         public virtual List<Servico> Servicos { get; set; }
 
         public virtual List<Especialidade> Especialidades { get; set; }
 
         public virtual List<Foto> Fotos { get; set; }
 
-        // usuarios que gostaram da clinica
-        public virtual List<Usuario> Usuarios { get; set; }
     }
 }

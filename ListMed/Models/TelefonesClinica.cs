@@ -7,29 +7,24 @@ using System.Web;
 
 namespace ListMed.Models
 {
-    [Table("Foto")]
-    public class Foto
+    [Table("TelefonesClinica")]
+    public class TelefonesClinica
     {
         [Key]
         public int Id { get; set; }
 
-        [StringLength(120)]
-        public string Titulo { get; set; }
-
-        public string URL { get; set; }
+        [StringLength(17)]
+        public string Numero { get; set; }
 
         public int? IdClinica { get; set; }
-
-        public int? IdAmostraClinica { get; set; }
-
-        public byte[] Imagem { get; set; }
-
-        public string tipoImg { get; set; }
 
         [ForeignKey("IdClinica")]
         public virtual Clinica Clinica { get; set; }
 
+        public int? IdAmostraClinica { get; set; }
+
         [ForeignKey("IdAmostraClinica")]
         public virtual AmostraClinica AmostraClinica { get; set; }
+
     }
 }

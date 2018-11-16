@@ -21,5 +21,7 @@ namespace ListMed.Models
         public DbSet<Cidade> Cidades { get; set; }
         public DbSet<Bairro> Bairros { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<TelefonesClinica> TelefonesClinicas { get; set; }
+        public DbSet<AmostraClinica> AmostrasClinicas { get; set; }
     }
 }
