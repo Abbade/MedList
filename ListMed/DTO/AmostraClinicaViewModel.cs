@@ -21,13 +21,17 @@ namespace ListMed.DTO
         public string Longitude { get; set; }
 
         [Range(0.0, Double.PositiveInfinity)]
+        [Display(Name = "Preço Consulta")]
         public decimal? PrecoConsulta { get; set; }
 
         [Range(0.0, Double.PositiveInfinity)]
+        [Display(Name = "Preço Exame")]
         public decimal? PrecoExame { get; set; }
 
+        [Display(Name = "Hora de Abertura")]
         public TimeSpan? HoraAbertura { get; set; }
 
+        [Display(Name = "Hora de Fechamento")]
         public TimeSpan? HoraFechamento { get; set; }
 
         [Required(ErrorMessage = "Informe o estado!")]
@@ -39,6 +43,10 @@ namespace ListMed.DTO
         [Required(ErrorMessage = "Informe o bairro!")]
         public int IdBairro { get; set; }
 
+        public string logradouro { get; set; }
+        public int? numero {get;set;}
+        public string complemento {get;set;}
+        public string cepClinica {get;set;}
         public  List<TelefonesClinica> TelefonesClinicas { get; set; }
 
     }
