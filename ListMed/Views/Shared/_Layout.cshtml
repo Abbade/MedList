@@ -36,9 +36,11 @@
                 {
                     var identity = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-                    <ul class="nav navbar navbar-right">
-                        <li><a href="~/Perfil/MinhasClinicas" class="nav-dir">Clínicas Favoritas</a></li>
-                    </ul>
+                <ul class="nav navbar navbar-right">
+
+                    <li><a href="~/Perfil/MinhasClinicas" class="nav-dir">Clínicas Favoritas</a></li>
+                    <li><a href="~/Contribua/" class="btn btn-outline-success">Ganhe Pontos</a></li>
+                </ul>
                     bool temFoto = identity.Claims.FirstOrDefault(c => c.Type == "TemFoto") != null ? Convert.ToBoolean(identity.Claims.FirstOrDefault(c => c.Type == "TemFoto").Value) : false;
                     <a href="#" class="dropdown-toggle nav-dir" data-toggle="dropdown">
                         @if (temFoto)

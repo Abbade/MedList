@@ -144,16 +144,9 @@ $("#txtServicos").autocomplete({
     });
 
 $('#cadastraClinica').on('submit', function () {
-    //var cadServicos = [];
-    //var cadEspecialidades = [];
-    //$('.divServicos').find('.boxServicos').each(function () {
-    //    cadServicos.push(parseInt($(this).attr('ref')));
-    //});
-    //$('.divEspecialidades').find('.boxEspecialidades').each(function () {
-    //    cadEspecialidades.push(parseInt($(this).attr('ref')));
-    //});
-    //console.log("Servicos: " + cadServicos + "Especidadades: " + cadEspecialidades);
-    //$('#servicos').val(cadServicos);
-    //$('#especialidades').val(cadEspecialidades);
+    $('.dinheiro').each(function (i, item) {
+        $(this).val($(this).val().replace(/\./g, ''));
+    
+    });
 
 });

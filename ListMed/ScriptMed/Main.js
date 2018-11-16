@@ -39,3 +39,12 @@ $('#procura_clinica').keypress(function (e) {
         $('.class="form_consultaClinica"').submit();
     }
 });
+$('.cel').mask('(00) 00000-0000');
+$('.cel').blur(function () {
+    if ($(this).val().length < 15) {
+        $(this).mask('(00) 0000-0000');
+    }
+});
+
+$('.cep').mask('00000-000');
+$('.hora').mask('00:00');

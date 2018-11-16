@@ -170,6 +170,7 @@
     <Compile Include="DTO\AlterarSenha.cs" />
     <Compile Include="DTO\AmostraClinicaViewModel.cs" />
     <Compile Include="Geral\Anexo.cs" />
+    <Compile Include="Geral\DecimalBinder.cs" />
     <Compile Include="Migrations\201811111652438_avaliacao.cs" />
     <Compile Include="Migrations\201811111652438_avaliacao.Designer.cs">
       <DependentUpon>201811111652438_avaliacao.cs</DependentUpon>
@@ -411,6 +412,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -456,6 +458,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Perfil\MinhasClinicas.cshtml" />
     <Content Include="Views\Contribua\CadastrarClinica.cshtml" />
+    <Content Include="Views\Contribua\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
