@@ -20,11 +20,16 @@ namespace ListMed.Models
 
         public int? IdClinica { get; set; }
 
-        public double? altura { get; set; }
+        public int? IdAmostraClinica { get; set; }
 
-        public double? largura { get; set; }
+        public byte[] Imagem { get; set; }
+
+        public string tipoImg { get; set; }
 
         [ForeignKey("IdClinica")]
         public virtual Clinica Clinica { get; set; }
+
+        [ForeignKey("IdAmostraClinica")]
+        public virtual AmostraClinica AmostraClinica { get; set; }
     }
 }

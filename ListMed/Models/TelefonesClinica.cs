@@ -16,10 +16,15 @@ namespace ListMed.Models
         [StringLength(17)]
         public string Numero { get; set; }
 
-        public int IdClinica { get; set; }
+        public int? IdClinica { get; set; }
 
         [ForeignKey("IdClinica")]
         public virtual Clinica Clinica { get; set; }
-              
+
+        public int? IdAmostraClinica { get; set; }
+
+        [ForeignKey("IdAmostraClinica")]
+        public virtual AmostraClinica AmostraClinica { get; set; }
+
     }
 }

@@ -13,6 +13,7 @@ namespace ListMed.Models
         public Especialidade()
         {
             Clinicas = new List<Clinica>();
+            AmostraClinicas = new List<AmostraClinica>();
         }
         [Key]
         public int Id { get; set; }
@@ -21,5 +22,7 @@ namespace ListMed.Models
         public string descricao { get; set; }
 
         public virtual List<Clinica> Clinicas { get; set; }
+
+        public virtual List<AmostraClinica> AmostraClinicas { get; set; }
     }
 }

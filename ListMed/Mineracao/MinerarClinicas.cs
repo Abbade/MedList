@@ -93,8 +93,7 @@ namespace ListMed.Mineracao
                                     foreach (var foto in clinica.photos)
                                     {
                                         Foto f = new Foto();
-                                        f.altura = foto.height;
-                                        f.largura = foto.width;
+              
                                         f.URL = foto.html_attributions.FirstOrDefault();
                                         f.IdClinica = c.Id;
                                         db.Fotos.Add(f);
@@ -179,8 +178,7 @@ namespace ListMed.Mineracao
                                         foreach (var foto in clinica.photos)
                                         {
                                             Foto f = new Foto();
-                                            f.altura = foto.height;
-                                            f.largura = foto.width;
+                           
                                             f.URL = foto.html_attributions.FirstOrDefault();
                                             f.IdClinica = c.Id;
                                             db.Fotos.Add(f);
