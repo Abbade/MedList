@@ -93,6 +93,14 @@ namespace ListMed.Controllers
             else
                 return RedirectToAction("Index", "Inicio");
         }
+        public FileContentResult FotoPerfil(int id)
+        {
+            var usuario = db.Usuarios.Find(id);
+            if (usuario != null)
+                return File(usuario.Foto, "image", "perfil_" + usuario.Id);
+            else
+                return null;
+        }
         public ActionResult Logout()
         {
             Request.GetOwinContext().Authentication.SignOut("ApplicationCookie");

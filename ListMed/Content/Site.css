@@ -262,4 +262,18 @@ a.semEstilo:after {
     .btn-entre {
         float: left;
     }
+    .card {
+        height: 240px;
+    }
+    .precoEstrela {
+        padding-left: 35px;
+    }
+}
+@media (max-width: 320px){
+    .form_consultaClinica{
+        text-align: center;
+    }
+    #procura_clinica{
+        width: 100%;
+    }
 }

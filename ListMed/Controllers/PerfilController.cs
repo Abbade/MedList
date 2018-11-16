@@ -91,6 +91,7 @@ namespace ListMed.Controllers
             else
                 return null;
         }
+
         public  Usuario RetornaUsuario()
         {
             var identity = User.Identity as ClaimsIdentity;
