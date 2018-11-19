@@ -169,6 +169,21 @@ $('.addTelCadClie').on('click', function () {
      
     });
 });
+$('.addTelEditClie').on('click', function () {
+    var html = '<div class=" col-md-5 col-10"><label>Telefone</label><input type="text" class="form-control cel" name="cel" /></div><div class="col-md-1 col-2" style="padding: 15px;"><a href="javascript:void(0)" class="semEstilo excluiCel" ><i class="fa fa-times-circle"></i></a></div>';
+    $('.telefones').append(html);
+    $('.cel').mask('(00) 00000-0000');
+    $('.cel').blur(function () {
+        if ($(this).val().length < 15) {
+            $(this).mask('(00) 0000-0000');
+        }
+    });
+    $('.excluiCel').on('click', function () {
+        $(this).parent().prev().remove();
+        $(this).parent().remove();
+
+    });
+});
 $('.excluiCel').on('click', function () {
     $(this).parent().prev().remove();
     $(this).parent().remove();

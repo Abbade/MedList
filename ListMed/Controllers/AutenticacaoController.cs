@@ -81,7 +81,8 @@ namespace ListMed.Controllers
                new Claim(ClaimTypes.Name, usuario.nick),
                 new Claim(ClaimTypes.Email, usuario.email),
                 new Claim("TemFoto", foto.ToString()),
-                new Claim("Id", usuario.Id.ToString())
+                new Claim("Id", usuario.Id.ToString()),
+                new Claim(ClaimTypes.Role, usuario.Tipo.ToString())
             }, "ApplicationCookie");
 
 

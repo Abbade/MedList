@@ -7,7 +7,7 @@
 
 
 
-@using (Html.BeginForm("CadastrarClinica", "Contribua", FormMethod.Post, new { @id = "cadastraClinica" }))
+@using (Html.BeginForm("ConfirmarAmostra", "Painel", FormMethod.Post, new { @id = "cadastraClinica" }))
 {
     @Html.HiddenFor(model => model.Id)
     @Html.AntiForgeryToken()
@@ -30,7 +30,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     @Html.Label("Nome da Clínica", htmlAttributes: new { @class = "control-label", @required = "required" })
-                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control pts"} })
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control pts" } })
                     @Html.ValidationMessageFor(dto => dto.Nome, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.PrecoExame, htmlAttributes: new { @class = "control-label" })
 
-                    @Html.EditorFor(model => model.PrecoExame, new { htmlAttributes = new { @class = "form-control dinheiro pts", @placeholder = "R$ 00,00"} })
+                    @Html.EditorFor(model => model.PrecoExame, new { htmlAttributes = new { @class = "form-control dinheiro pts", @placeholder = "R$ 00,00" } })
                     @Html.ValidationMessageFor(model => model.PrecoExame, "", new { @class = "text-danger" })
 
                 </div>
@@ -91,7 +91,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.HoraFechamento, htmlAttributes: new { @class = "control-label" })
 
-                    @Html.EditorFor(model => model.HoraFechamento, new { htmlAttributes = new { @class = "form-control hora pts", @placeholder = "00:00"  } })
+                    @Html.EditorFor(model => model.HoraFechamento, new { htmlAttributes = new { @class = "form-control hora pts", @placeholder = "00:00" } })
                     @Html.ValidationMessageFor(model => model.HoraFechamento, "", new { @class = "text-danger" })
 
                 </div>
@@ -111,31 +111,73 @@
                 <input type="text" class="form-control cel pts" name="cel" value="@( Model.TelefonesClinicas[0] != null ? Model.TelefonesClinicas[0].Numero : "")" required />
             </div>
             <div class="col-md-1 col-2">
-                <button type="button" class="btn addTelCadClie"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn addTelEditClie"><i class="fa fa-plus"></i></button>
             </div>
         </div>
-        <div class="row telefones">
+        <div class="telefones row">
+            <div class="col-md-2">
+                <label>Estado</label>
+                @Html.DropDownList("IdEstado", ViewBag.estado as SelectList,  new { @class = "form-control selectEstado " })
+            </div>
+            <div class="col-md-2">
+                <label>Cidade</label>
+                @Html.DropDownList("IdCidade", ViewBag.cidade as SelectList,  new { @class = "form-control selectCidade "})
+                @Html.ValidationMessageFor(model => model.IdCidade, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                <label>Bairro</label>
+                @Html.DropDownList("IdBairro", ViewBag.bairro as SelectList, new { @class = "form-control selectBairro " })
+
+                @Html.ValidationMessageFor(model => model.IdBairro, "", new { @class = "text-danger" })
+            </div>
+            @{
+                int i = 0;
+            }
             @foreach (var tel in Model.TelefonesClinicas)
             {
-                <div class="offset-md-6 col-md-5">
-                    <label>Telefone</label>
-                    <input type="text" class="form-control cel" name="cel" value="@tel.Numero" />
-                </div>
-                <div class="col-md-1 col-2" style="padding: 15px;"><a href="javascript:void(0)" class="semEstilo excluiCel"><i class="fa fa-times-circle"></i></a></div>
+                if (i > 0)
+                {
+                    <div class=" col-md-5">
+                        <label>Telefone</label>
+                        <input type="text" class="form-control cel" name="cel" value="@tel.Numero" />
+                    </div>
+                    <div class="col-md-1 col-2" style="padding: 15px;"><a href="javascript:void(0)" class="semEstilo excluiCel"><i class="fa fa-times-circle"></i></a></div>
+                }
+
+                i++;
             }
         </div>
+        @*<div class="row telefones">
+          
+        </div>*@
         <div class="row mt-3">
             <div class="col-md-6  border-right">
                 <label for="txtEspecialidades" style="text-align: center;">Especialidades</label>
                 <input type="text" class="form-control procuraClinica_lista" style="width: 50%" id="txtEspecialidades" />
                 <div class="divEspecialidades mt-3">
-       
+                    @foreach (var esp in Model.EspecialidadesEdit)
+                    {
+                        <div class="chip boxEspecialidades" ref="@esp.Id">
+                            <small>@esp.descricao</small>
+                            <input type="hidden" name="especialidades" value="@esp.Id">
+                            <span class="closebtn">×</span>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="col-md-6">
                 <label>Serviços</label>
                 <input type="text" class="form-control procuraClinica_lista" style="width: 50%;" id="txtServicos" />
-                <div class="divServicos mt-3"></div>
+                <div class="divServicos mt-3">
+                    @foreach (var serv in Model.ServicosEdit)
+                    {
+                        <div class="chip boxServicos" ref="@serv.Id">
+                            <small>@serv.Descricao</small>
+                            <input type="hidden" name="servicos" value="@serv.Id">
+                            <span class="closebtn">×</span>
+                        </div>
+                    }
+                </div>
             </div>
         </div>
         <div class="row mt-3">

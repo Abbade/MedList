@@ -172,6 +172,7 @@
     <Compile Include="DTO\AmostraClinicaViewModel.cs" />
     <Compile Include="DTO\ListaAmostra.cs" />
     <Compile Include="Geral\Anexo.cs" />
+    <Compile Include="Geral\AutorizacaoTipo.cs" />
     <Compile Include="Geral\DecimalBinder.cs" />
     <Compile Include="Migrations\201811111652438_avaliacao.cs" />
     <Compile Include="Migrations\201811111652438_avaliacao.Designer.cs">
@@ -197,8 +198,17 @@
     <Compile Include="Migrations\201811180213015_amostra1.Designer.cs">
       <DependentUpon>201811180213015_amostra1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811191046194_tipousu.cs" />
+    <Compile Include="Migrations\201811191046194_tipousu.Designer.cs">
+      <DependentUpon>201811191046194_tipousu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811191853043_ativoAmostra.cs" />
+    <Compile Include="Migrations\201811191853043_ativoAmostra.Designer.cs">
+      <DependentUpon>201811191853043_ativoAmostra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AmostraClinica.cs" />
     <Compile Include="Models\TelefonesClinica.cs" />
+    <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
@@ -560,6 +570,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811180213015_amostra1.resx">
       <DependentUpon>201811180213015_amostra1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191046194_tipousu.resx">
+      <DependentUpon>201811191046194_tipousu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191853043_ativoAmostra.resx">
+      <DependentUpon>201811191853043_ativoAmostra.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

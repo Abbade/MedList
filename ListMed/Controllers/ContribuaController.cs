@@ -96,7 +96,7 @@ namespace ListMed.Controllers
                 throw;
             }
 
-            return View();
+            return View("Index");
         }
         private void selectsCadastro()
         {
