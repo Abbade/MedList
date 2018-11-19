@@ -14,6 +14,7 @@ namespace ListMed.Models
         {
             Avaliacoes = new List<Avaliacao>();
             Clinicas = new List<Clinica>();
+            AmostrasClinicas = new List<AmostraClinica>();
         }
         [Key]
         public int Id { get; set; }
@@ -32,6 +33,8 @@ namespace ListMed.Models
         public byte[] Foto { get; set; }
 
         public virtual List<Avaliacao> Avaliacoes { get; set; }
+
+        public virtual List<AmostraClinica> AmostrasClinicas { get; set; }
 
         // clinicas que ele gosta
         public virtual List<Clinica> Clinicas { get; set; }

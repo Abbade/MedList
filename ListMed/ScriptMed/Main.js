@@ -47,4 +47,12 @@ $('.cel').blur(function () {
 });
 
 $('.cep').mask('00000-000');
-$('.hora').mask('00:00');
+//$('.hora').mask('00:00');
+$('.hora').mask('Hh:Mm', {
+    'translation': {
+        H: { pattern: /[0-2]/ },
+        h: { pattern: /[01]?\d|2[0-3]/ },
+        M: { pattern: /[0-5]/ },
+        m: { pattern: /[0-9]/ }
+    }
+});

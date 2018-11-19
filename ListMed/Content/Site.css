@@ -7,7 +7,7 @@ body {
     margin-bottom: 100px;
 }
 .inicio {
-    padding-top: 4rem;
+    padding-top: 5rem;
 }
 footer {
     position: absolute;
@@ -181,7 +181,7 @@ a.semEstilo:after {
         text-decoration: none;
     }
 
-.checado {
+.checado, .mostrapt {
     color: orange;
 }
 .check {
@@ -249,6 +249,12 @@ a.semEstilo:after {
 .btn-entre {
     float: right;
 }
+.addTelCadClie {
+    margin-top: 31px;
+}
+.excluiCel {
+    margin-top: 15px;
+}
 @media (max-width: 923px) {
     .fotos, .maisInfos {
         display: none;
@@ -268,6 +274,9 @@ a.semEstilo:after {
     .precoEstrela {
         padding-left: 35px;
     }
+    .addTelCadClie{
+        margin-top: 27px;
+    }
 }
 @media (max-width: 320px){
     .form_consultaClinica{
@@ -276,4 +285,18 @@ a.semEstilo:after {
     #procura_clinica{
         width: 100%;
     }
+}
+.ptInput {
+
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    max-width: 5rem;
 }

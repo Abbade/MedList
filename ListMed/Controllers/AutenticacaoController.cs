@@ -96,7 +96,7 @@ namespace ListMed.Controllers
         public FileContentResult FotoPerfil(int id)
         {
             var usuario = db.Usuarios.Find(id);
-            if (usuario != null)
+            if (usuario != null && usuario.Foto != null)
                 return File(usuario.Foto, "image", "perfil_" + usuario.Id);
             else
                 return null;

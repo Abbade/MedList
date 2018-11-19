@@ -165,10 +165,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ContribuaController.cs" />
+    <Compile Include="Controllers\PainelController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="DTO\AlterarPerfil.cs" />
     <Compile Include="DTO\AlterarSenha.cs" />
     <Compile Include="DTO\AmostraClinicaViewModel.cs" />
+    <Compile Include="DTO\ListaAmostra.cs" />
     <Compile Include="Geral\Anexo.cs" />
     <Compile Include="Geral\DecimalBinder.cs" />
     <Compile Include="Migrations\201811111652438_avaliacao.cs" />
@@ -190,6 +192,10 @@
     <Compile Include="Migrations\201811160152168_amostraClinica.cs" />
     <Compile Include="Migrations\201811160152168_amostraClinica.Designer.cs">
       <DependentUpon>201811160152168_amostraClinica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811180213015_amostra1.cs" />
+    <Compile Include="Migrations\201811180213015_amostra1.Designer.cs">
+      <DependentUpon>201811180213015_amostra1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AmostraClinica.cs" />
     <Compile Include="Models\TelefonesClinica.cs" />
@@ -459,6 +465,8 @@
     <Content Include="Views\Perfil\MinhasClinicas.cshtml" />
     <Content Include="Views\Contribua\CadastrarClinica.cshtml" />
     <Content Include="Views\Contribua\Index.cshtml" />
+    <Content Include="Views\Painel\Index.cshtml" />
+    <Content Include="Views\Painel\VerificarAmostra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -549,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811160152168_amostraClinica.resx">
       <DependentUpon>201811160152168_amostraClinica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811180213015_amostra1.resx">
+      <DependentUpon>201811180213015_amostra1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

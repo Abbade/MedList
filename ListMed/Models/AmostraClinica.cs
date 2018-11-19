@@ -51,10 +51,16 @@ namespace ListMed.Models
 
         public int? IdEstado { get; set; }
 
+        public int Pontos { get; set; }
 
         public int? IdCidade { get; set; }
 
         public Nullable<int> IdBairro { get; set; }
+
+        public int IdUsuario { get; set; }
+
+        [ForeignKey("IdUsuario")]
+        public virtual Usuario Usuario { get; set; }
 
         public virtual List<TelefonesClinica> TelefonesClinicas { get; set; }
 

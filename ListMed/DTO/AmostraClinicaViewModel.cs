@@ -9,6 +9,9 @@ namespace ListMed.DTO
 {
     public class AmostraClinicaViewModel
     {
+
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Informe o nome!")]
         [MaxLength(180, ErrorMessage = "Digite no máximo 180 caracteres!")]
         public string Nome { get; set; }
@@ -47,7 +50,11 @@ namespace ListMed.DTO
         public int? numero {get;set;}
         public string complemento {get;set;}
         public string cepClinica {get;set;}
+        public string EnderecoFormatado { get; set; }
+        public int pontos { get; set; }
         public  List<TelefonesClinica> TelefonesClinicas { get; set; }
+        public List<Especialidade> Especialidades { get; set; }
+        public List<Servico> Servicos { get; set; }
 
     }
 }
