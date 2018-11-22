@@ -12,5 +12,6 @@ namespace ListMed.DTO
         public string Site { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
+        public string NomeUsuario { get; set; }
     }
 }

@@ -53,8 +53,8 @@ namespace ListMed.DTO
         public string EnderecoFormatado { get; set; }
         public int pontos { get; set; }
         public  List<TelefonesClinica> TelefonesClinicas { get; set; }
-        public List<Especialidade> Especialidades { get; set; }
-        public List<Servico> Servicos { get; set; }
+        public List<Especialidade> EspecialidadesEdit { get; set; }
+        public List<Servico> ServicosEdit { get; set; } 
 
     }
 }

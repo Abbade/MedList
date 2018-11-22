@@ -33,6 +33,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Cidade)
                     </th>
+                    <th>Usuário</th>
                     <th></th>
                 </tr>
 
@@ -46,13 +47,16 @@
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Site)
+                            <a href="http://@Html.DisplayFor(modelItem => item.Site)" target="_blank">@Html.DisplayFor(modelItem => item.Site)</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Estado)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Cidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeUsuario)
                         </td>
                         <td>
                             <a href="~/Painel/VerificarAmostra/@item.Id" ><i class="fa fa-eye"></i></a>

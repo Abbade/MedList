@@ -59,6 +59,8 @@ namespace ListMed.Models
 
         public int IdUsuario { get; set; }
 
+        public bool Ativo { get; set; } = true;
+
         [ForeignKey("IdUsuario")]
         public virtual Usuario Usuario { get; set; }
 
