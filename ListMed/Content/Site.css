@@ -303,3 +303,6 @@ a.semEstilo:after {
 .ui-autocomplete{
     z-index: 2000;
 }
+.telefonePainel{
+    margin-top: 2rem;
+}

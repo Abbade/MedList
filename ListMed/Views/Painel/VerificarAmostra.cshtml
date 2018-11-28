@@ -108,10 +108,10 @@
             </div>
             <div class="col-md-5 col-12">
                 <label>Telefone</label>
-                <input type="text" class="form-control cel pts" name="cel" value="@( Model.TelefonesClinicas[0] != null ? Model.TelefonesClinicas[0].Numero : "")" required />
+                <input type="text" class="form-control cel pts" name="cel" value="@(Model.TelefonesClinicas != null && Model.TelefonesClinicas.Count > 0 && Model.TelefonesClinicas[0] != null ? Model.TelefonesClinicas[0].Numero : "")" required />
             </div>
             <div class="col-md-1 col-2">
-                <button type="button" class="btn addTelEditClie"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn addTelEditClie telefonePainel"><i class="fa fa-plus"></i></button>
             </div>
         </div>
         <div class="telefones row">

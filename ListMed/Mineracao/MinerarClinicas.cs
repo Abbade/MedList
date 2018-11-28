@@ -39,7 +39,7 @@ namespace ListMed.Mineracao
                 {
                     AmostraClinica c = new AmostraClinica();
                     string tel1 = "", tel2 = "";
-                    var cliAux = db.Clinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
+                    var cliAux = db.AmostrasClinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
                     if (cliAux == null)
                     {
                         c.NomeFantasia = clinica.name;
@@ -114,7 +114,7 @@ namespace ListMed.Mineracao
                     {
                         string telcli1 = "", telcli2 = "";
                         AmostraClinica c = new AmostraClinica();
-                        var cliAux = db.Clinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
+                        var cliAux = db.AmostrasClinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
                         if (cliAux == null)
                         {
                             c.NomeFantasia = clinica.name;
