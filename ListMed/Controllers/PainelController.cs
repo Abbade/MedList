@@ -33,9 +33,11 @@ namespace ListMed.Controllers
         {
    
             var a = db.AmostrasClinicas.Find(id);
-            ViewBag.estado = new SelectList(db.Estados, "Id", "Nome", a.IdEstado);
-            ViewBag.cidade = new SelectList(db.Cidades, "Id", "Nome", a.IdCidade);
-            ViewBag.bairro = new SelectList(db.Bairros, "Id", "Nome", a.IdBairro);
+            var estado = db.Estados.Find(a.IdEstado).Uf;
+            var cidadinha = db.Cidades.Find(a.IdCidade).Codigo;
+            ViewBag.state = new SelectList(db.Estados, "Id", "Nome", a.IdEstado);
+            ViewBag.cidade = new SelectList(db.Cidades.Where(c => c.Uf == estado), "Id", "Nome", a.IdCidade);
+            ViewBag.bairro = new SelectList(db.Bairros.Where(b => b.Codigo.Contains(cidadinha.ToString())), "Id", "Nome", a.IdBairro);
             if (a != null)
             {
                 var Amostra = new AmostraClinicaViewModel
@@ -66,7 +68,7 @@ namespace ListMed.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmarAmostra(AmostraClinicaViewModel dto, int[] servicos, int[] especialidades, string[] cel)
+        public ActionResult ConfirmarAmostra(AmostraClinicaViewModel dto, int[] servicos, int[] especialidades, string[] cel, int EstadoId, int cidadeId, int bairroId)
         {
             if (!ModelState.IsValid)
             {
@@ -84,9 +86,9 @@ namespace ListMed.Controllers
                 PrecoExame = dto.PrecoExame,
                 HoraAbertura = dto.HoraAbertura,
                 HoraFechamento = dto.HoraFechamento,
-                IdEstado = dto.IdEstado,
-                IdBairro = dto.IdBairro,
-                IdCidade = dto.IdCidade
+                IdEstado = EstadoId,
+                IdBairro = bairroId,
+                IdCidade = cidadeId
             };
             List<Servico> servs = new List<Servico>();
             foreach (int s in servicos)

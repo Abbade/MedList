@@ -117,16 +117,16 @@
         <div class="telefones row">
             <div class="col-md-2">
                 <label>Estado</label>
-                @Html.DropDownList("IdEstado", ViewBag.estado as SelectList, "Selecione",  new { @class = "form-control selectEstado " })
+                @Html.DropDownList("EstadoId", ViewBag.state as SelectList, "Selecione",  new { @class = "form-control selectEstado " })
             </div>
             <div class="col-md-2">
                 <label>Cidade</label>
-                @Html.DropDownList("IdCidade", ViewBag.cidade as SelectList,  new { @class = "form-control selectCidade "})
+                @Html.DropDownList("cidadeId", ViewBag.cidade as SelectList, "Selecione", new { @class = "form-control selectCidade " })
                 @Html.ValidationMessageFor(model => model.IdCidade, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-2">
                 <label>Bairro</label>
-                @Html.DropDownList("IdBairro", ViewBag.bairro as SelectList, new { @class = "form-control selectBairro " })
+                @Html.DropDownList("bairroId", ViewBag.bairro as SelectList, "Selecione", new { @class = "form-control selectBairro " })
 
                 @Html.ValidationMessageFor(model => model.IdBairro, "", new { @class = "text-danger" })
             </div>

@@ -105,7 +105,7 @@ namespace ListMed.Controllers
         [HttpPost]
         public JsonResult ListarCidades(int id)
         {
-            string uf = db.Estados.Find(id).CodigoUf;
+            string uf = db.Estados.Find(id).Uf;
             var cidades = db.Cidades.Where(c => c.Uf == uf).Select(a => new {
                 id = a.Id,
                 descricao = a.Nome

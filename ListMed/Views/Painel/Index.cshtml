@@ -7,20 +7,12 @@
 
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 m-2">
-            <button type="button" class="btn btn-success">Aceitar Todos</button>
-     
-        </div>
- 
-    </div>
+
     <div class="row">
         <div class="col-md-12">
             <table class="table table-striped table-responsive-sm">
                 <tr>
-                    <th>
-                        <input type="checkbox" class="marcarTodos" />
-                    </th>
+              
                     <th>
                         @Html.DisplayNameFor(model => model.Nome)
                     </th>
@@ -40,14 +32,12 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            <input type="checkbox" class="" ref="@item.Id" />
-                        </td>
+                
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            <a href="http://@Html.DisplayFor(modelItem => item.Site)" target="_blank">@Html.DisplayFor(modelItem => item.Site)</a>
+                            <a href="@Html.DisplayFor(modelItem => item.Site)" target="_blank">@Html.DisplayFor(modelItem => item.Site)</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Estado)
