@@ -17,13 +17,19 @@ namespace ListMed.Models
         }
         [Key]
         public int Id { get; set; }
-
-        [MaxLength(200, ErrorMessage = "A descrição não pode ultrapassar de 200 caracteres!")]
-        public string Descricao { get; set; }
+        [MaxLength(50, ErrorMessage = "A descrição não pode ultrapassar de 200 caracteres!")]
+        public string Nome { get; set; }
 
         [MaxLength(2, ErrorMessage = "Somente 2 caracteres")]
-        public string UF { get; set; }
+        public string CodigoUf { get; set; }
 
+        public string Uf { get; set; }
+
+        public int Regiao { get; set; }
+
+
+        [ForeignKey("Regiao")]
+        public virtual Regiao RegiaoDoEstado { get; set; }
         public virtual List<Clinica> Clinicas { get; set; }
         public virtual List<Cidade> Cidades { get; set; }
     }

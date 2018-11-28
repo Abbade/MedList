@@ -12,5 +12,6 @@ namespace ListMed.DTO
         public HttpPostedFileBase foto { get; set; }
         public string email { get; set; }
         public bool? temFoto { get; set; }
+        public int pontos { get; set; }
     }
 }

@@ -10,8 +10,8 @@ namespace ListMed.Models
     [Table("Avaliacao")]
     public class Avaliacao
     {
-        [Key]
-        public int Id { get; set; }
+  
+
 
         [Range(1, 5)]
         public int? nota { get; set; }
@@ -19,8 +19,10 @@ namespace ListMed.Models
         [StringLength(275)]
         public string comentario { get; set; }
 
+        [Key, Column(Order = 0)]
         public int IdClinica { get; set; }
 
+        [Key, Column(Order = 1)]
         public int IdUsuario { get; set; }
 
         public DateTime DataHora { get; set; }

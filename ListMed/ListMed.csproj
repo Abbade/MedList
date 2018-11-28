@@ -174,39 +174,28 @@
     <Compile Include="Geral\Anexo.cs" />
     <Compile Include="Geral\AutorizacaoTipo.cs" />
     <Compile Include="Geral\DecimalBinder.cs" />
-    <Compile Include="Migrations\201811111652438_avaliacao.cs" />
-    <Compile Include="Migrations\201811111652438_avaliacao.Designer.cs">
-      <DependentUpon>201811111652438_avaliacao.cs</DependentUpon>
+    <Compile Include="Migrations\201811241933332_inicial.cs" />
+    <Compile Include="Migrations\201811241933332_inicial.Designer.cs">
+      <DependentUpon>201811241933332_inicial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811112214405_fotoUsuario.cs" />
-    <Compile Include="Migrations\201811112214405_fotoUsuario.Designer.cs">
-      <DependentUpon>201811112214405_fotoUsuario.cs</DependentUpon>
+    <Compile Include="Migrations\201811241949373_avaliacaounica.cs" />
+    <Compile Include="Migrations\201811241949373_avaliacaounica.Designer.cs">
+      <DependentUpon>201811241949373_avaliacaounica.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811150238552_tel1n.cs" />
-    <Compile Include="Migrations\201811150238552_tel1n.Designer.cs">
-      <DependentUpon>201811150238552_tel1n.cs</DependentUpon>
+    <Compile Include="Migrations\201811280310201_estadouf.cs" />
+    <Compile Include="Migrations\201811280310201_estadouf.Designer.cs">
+      <DependentUpon>201811280310201_estadouf.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811150315414_nullbairro.cs" />
-    <Compile Include="Migrations\201811150315414_nullbairro.Designer.cs">
-      <DependentUpon>201811150315414_nullbairro.cs</DependentUpon>
+    <Compile Include="Migrations\201811280410395_usuarioponto.cs" />
+    <Compile Include="Migrations\201811280410395_usuarioponto.Designer.cs">
+      <DependentUpon>201811280410395_usuarioponto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811160152168_amostraClinica.cs" />
-    <Compile Include="Migrations\201811160152168_amostraClinica.Designer.cs">
-      <DependentUpon>201811160152168_amostraClinica.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811180213015_amostra1.cs" />
-    <Compile Include="Migrations\201811180213015_amostra1.Designer.cs">
-      <DependentUpon>201811180213015_amostra1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191046194_tipousu.cs" />
-    <Compile Include="Migrations\201811191046194_tipousu.Designer.cs">
-      <DependentUpon>201811191046194_tipousu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811191853043_ativoAmostra.cs" />
-    <Compile Include="Migrations\201811191853043_ativoAmostra.Designer.cs">
-      <DependentUpon>201811191853043_ativoAmostra.cs</DependentUpon>
+    <Compile Include="Migrations\201811280417568_nullponto.cs" />
+    <Compile Include="Migrations\201811280417568_nullponto.Designer.cs">
+      <DependentUpon>201811280417568_nullponto.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AmostraClinica.cs" />
+    <Compile Include="Models\Regiao.cs" />
     <Compile Include="Models\TelefonesClinica.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Startup.cs" />
@@ -228,90 +217,6 @@
     <Compile Include="DTO\retornoPlaceID.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809141731504_inicial1.cs" />
-    <Compile Include="Migrations\201809141731504_inicial1.Designer.cs">
-      <DependentUpon>201809141731504_inicial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809141733222_inicial2.cs" />
-    <Compile Include="Migrations\201809141733222_inicial2.Designer.cs">
-      <DependentUpon>201809141733222_inicial2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809142012458_clinic.cs" />
-    <Compile Include="Migrations\201809142012458_clinic.Designer.cs">
-      <DependentUpon>201809142012458_clinic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810280134362_Localidade.cs" />
-    <Compile Include="Migrations\201810280134362_Localidade.Designer.cs">
-      <DependentUpon>201810280134362_Localidade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810280140236_Localidadexclinica.cs" />
-    <Compile Include="Migrations\201810280140236_Localidadexclinica.Designer.cs">
-      <DependentUpon>201810280140236_Localidadexclinica.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810280145493_Localidade_acerto.cs" />
-    <Compile Include="Migrations\201810280145493_Localidade_acerto.Designer.cs">
-      <DependentUpon>201810280145493_Localidade_acerto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810280220582_Localidade_acerto1.cs" />
-    <Compile Include="Migrations\201810280220582_Localidade_acerto1.Designer.cs">
-      <DependentUpon>201810280220582_Localidade_acerto1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810280429201_Localidade_acerto2.cs" />
-    <Compile Include="Migrations\201810280429201_Localidade_acerto2.Designer.cs">
-      <DependentUpon>201810280429201_Localidade_acerto2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810280502213_clinica_acerto.cs" />
-    <Compile Include="Migrations\201810280502213_clinica_acerto.Designer.cs">
-      <DependentUpon>201810280502213_clinica_acerto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810301534172_especialidadeEservicos.cs" />
-    <Compile Include="Migrations\201810301534172_especialidadeEservicos.Designer.cs">
-      <DependentUpon>201810301534172_especialidadeEservicos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810301539419_especialidadeEservicos1.cs" />
-    <Compile Include="Migrations\201810301539419_especialidadeEservicos1.Designer.cs">
-      <DependentUpon>201810301539419_especialidadeEservicos1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810301546071_especialidadeEservicos2.cs" />
-    <Compile Include="Migrations\201810301546071_especialidadeEservicos2.Designer.cs">
-      <DependentUpon>201810301546071_especialidadeEservicos2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811010328043_add_avaliacao.cs" />
-    <Compile Include="Migrations\201811010328043_add_avaliacao.Designer.cs">
-      <DependentUpon>201811010328043_add_avaliacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020226135_fotos.cs" />
-    <Compile Include="Migrations\201811020226135_fotos.Designer.cs">
-      <DependentUpon>201811020226135_fotos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020324266_fotos1.cs" />
-    <Compile Include="Migrations\201811020324266_fotos1.Designer.cs">
-      <DependentUpon>201811020324266_fotos1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811050024112_cidadebairro.cs" />
-    <Compile Include="Migrations\201811050024112_cidadebairro.Designer.cs">
-      <DependentUpon>201811050024112_cidadebairro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811050252501_foto.cs" />
-    <Compile Include="Migrations\201811050252501_foto.Designer.cs">
-      <DependentUpon>201811050252501_foto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811050255030_foto1.cs" />
-    <Compile Include="Migrations\201811050255030_foto1.Designer.cs">
-      <DependentUpon>201811050255030_foto1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811050257133_foto11.cs" />
-    <Compile Include="Migrations\201811050257133_foto11.Designer.cs">
-      <DependentUpon>201811050257133_foto11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811050301577_foto12.cs" />
-    <Compile Include="Migrations\201811050301577_foto12.Designer.cs">
-      <DependentUpon>201811050301577_foto12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811081731490_usuario.cs" />
-    <Compile Include="Migrations\201811081731490_usuario.Designer.cs">
-      <DependentUpon>201811081731490_usuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Mineracao\MinerarClinicas.cs" />
@@ -490,96 +395,24 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809141731504_inicial1.resx">
-      <DependentUpon>201809141731504_inicial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809141733222_inicial2.resx">
-      <DependentUpon>201809141733222_inicial2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809142012458_clinic.resx">
-      <DependentUpon>201809142012458_clinic.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810280134362_Localidade.resx">
-      <DependentUpon>201810280134362_Localidade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810280140236_Localidadexclinica.resx">
-      <DependentUpon>201810280140236_Localidadexclinica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810280145493_Localidade_acerto.resx">
-      <DependentUpon>201810280145493_Localidade_acerto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810280220582_Localidade_acerto1.resx">
-      <DependentUpon>201810280220582_Localidade_acerto1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810280429201_Localidade_acerto2.resx">
-      <DependentUpon>201810280429201_Localidade_acerto2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810280502213_clinica_acerto.resx">
-      <DependentUpon>201810280502213_clinica_acerto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810301534172_especialidadeEservicos.resx">
-      <DependentUpon>201810301534172_especialidadeEservicos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810301539419_especialidadeEservicos1.resx">
-      <DependentUpon>201810301539419_especialidadeEservicos1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810301546071_especialidadeEservicos2.resx">
-      <DependentUpon>201810301546071_especialidadeEservicos2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811010328043_add_avaliacao.resx">
-      <DependentUpon>201811010328043_add_avaliacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020226135_fotos.resx">
-      <DependentUpon>201811020226135_fotos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020324266_fotos1.resx">
-      <DependentUpon>201811020324266_fotos1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811050024112_cidadebairro.resx">
-      <DependentUpon>201811050024112_cidadebairro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811050252501_foto.resx">
-      <DependentUpon>201811050252501_foto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811050255030_foto1.resx">
-      <DependentUpon>201811050255030_foto1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811050257133_foto11.resx">
-      <DependentUpon>201811050257133_foto11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811050301577_foto12.resx">
-      <DependentUpon>201811050301577_foto12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811081731490_usuario.resx">
-      <DependentUpon>201811081731490_usuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811111652438_avaliacao.resx">
-      <DependentUpon>201811111652438_avaliacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811112214405_fotoUsuario.resx">
-      <DependentUpon>201811112214405_fotoUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811150238552_tel1n.resx">
-      <DependentUpon>201811150238552_tel1n.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811150315414_nullbairro.resx">
-      <DependentUpon>201811150315414_nullbairro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811160152168_amostraClinica.resx">
-      <DependentUpon>201811160152168_amostraClinica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811180213015_amostra1.resx">
-      <DependentUpon>201811180213015_amostra1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191046194_tipousu.resx">
-      <DependentUpon>201811191046194_tipousu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811191853043_ativoAmostra.resx">
-      <DependentUpon>201811191853043_ativoAmostra.cs</DependentUpon>
-    </EmbeddedResource>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <EmbeddedResource Include="Migrations\201811241933332_inicial.resx">
+      <DependentUpon>201811241933332_inicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241949373_avaliacaounica.resx">
+      <DependentUpon>201811241949373_avaliacaounica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280310201_estadouf.resx">
+      <DependentUpon>201811280310201_estadouf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280410395_usuarioponto.resx">
+      <DependentUpon>201811280410395_usuarioponto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280417568_nullponto.resx">
+      <DependentUpon>201811280417568_nullponto.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

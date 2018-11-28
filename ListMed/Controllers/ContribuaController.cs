@@ -45,7 +45,7 @@ namespace ListMed.Controllers
             int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
             AmostraClinica a = new AmostraClinica
             {
-                EnderecoFormatado = dto.logradouro + ", " + dto.numero + " - " + dto.complemento + " - " + bair.Descricao + ", " + cid.Descricao + " - " + est.UF + ", " + dto.cepClinica + ", Brasil",
+                EnderecoFormatado = dto.logradouro + ", " + dto.numero + " - " + dto.complemento + " - " + bair.Nome + ", " + cid.Nome + " - " + est.CodigoUf + ", " + dto.cepClinica + ", Brasil",
                 NomeFantasia = dto.Nome,
                 LinkSite = dto.Site,
                 Lt = dto.Latitude,
@@ -100,23 +100,25 @@ namespace ListMed.Controllers
         }
         private void selectsCadastro()
         {
-            ViewBag.estado = new SelectList(db.Estados, "Id", "Descricao");
+            ViewBag.estado = new SelectList(db.Estados, "Id", "Nome");
         }
         [HttpPost]
         public JsonResult ListarCidades(int id)
         {
-            var cidades = db.Cidades.Where(c => c.IdEstado == id).Select(a => new {
+            string uf = db.Estados.Find(id).CodigoUf;
+            var cidades = db.Cidades.Where(c => c.Uf == uf).Select(a => new {
                 id = a.Id,
-                descricao = a.Descricao
+                descricao = a.Nome
             }).ToList();
             return Json(cidades);
         }
         [HttpPost]
         public JsonResult ListarBairros(int id)
         {
-            var bairros = db.Bairros.Where(b => b.IdCidade == id).Select(a => new {
+            string codCidade = db.Cidades.Find(id).Codigo.ToString();
+            var bairros = db.Bairros.Where(b => b.Codigo.Contains(codCidade)).Select(a => new {
                 id = a.Id,
-                descricao = a.Descricao
+                descricao = a.Nome
             }).ToList();
             return Json(bairros);
         }

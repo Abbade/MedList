@@ -47,11 +47,11 @@ namespace ListMed.Models
 
         public decimal? PrecoExame { get; set; }
 
-        public TimeSpan HoraAbertura { get; set; }
+        public TimeSpan? HoraAbertura { get; set; }
 
-        public TimeSpan HoraFechamento { get; set; }
+        public TimeSpan? HoraFechamento { get; set; }
 
-        public int? IdEstado { get; set; }
+        public int IdEstado { get; set; }
 
 
         public int? IdCidade { get; set; }

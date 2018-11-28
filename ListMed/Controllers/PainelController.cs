@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ListMed.DTO;
 using ListMed.Geral;
+using System.Security.Claims;
 
 namespace ListMed.Controllers
 {
@@ -22,8 +23,8 @@ namespace ListMed.Controllers
                 Id = a.Id,
                 Nome = a.NomeFantasia,
                 Site = a.LinkSite,
-                Cidade = a.Cidade.Descricao,
-                Estado = a.Estado.Descricao,
+                Cidade = a.Cidade.Nome,
+                Estado = a.Estado.Nome,
                 NomeUsuario = a.Usuario.nick
             }).ToList()
             );
@@ -32,9 +33,9 @@ namespace ListMed.Controllers
         {
    
             var a = db.AmostrasClinicas.Find(id);
-            ViewBag.estado = new SelectList(db.Estados, "Id", "Descricao", a.IdEstado);
-            ViewBag.cidade = new SelectList(db.Cidades, "Id", "Descricao", a.IdCidade);
-            ViewBag.bairro = new SelectList(db.Bairros, "Id", "Descricao", a.IdBairro);
+            ViewBag.estado = new SelectList(db.Estados, "Id", "Nome", a.IdEstado);
+            ViewBag.cidade = new SelectList(db.Cidades, "Id", "Nome", a.IdCidade);
+            ViewBag.bairro = new SelectList(db.Bairros, "Id", "Nome", a.IdBairro);
             if (a != null)
             {
                 var Amostra = new AmostraClinicaViewModel
@@ -72,8 +73,72 @@ namespace ListMed.Controllers
                 ViewBag.estado = new SelectList(db.Estados, "Id", "Descricao");
                 return View("VerificarAmostra", "Painel", new { id = dto.Id  });
             }
+            Clinica a = new Clinica
+            {
+                EnderecoFormatado = dto.EnderecoFormatado,
+                NomeFantasia = dto.Nome,
+                LinkSite = dto.Site,
+                Lt = dto.Latitude,
+                Lg = dto.Longitude,
+                PrecoConsulta = dto.PrecoConsulta,
+                PrecoExame = dto.PrecoExame,
+                HoraAbertura = dto.HoraAbertura,
+                HoraFechamento = dto.HoraFechamento,
+                IdEstado = dto.IdEstado,
+                IdBairro = dto.IdBairro,
+                IdCidade = dto.IdCidade
+            };
+            List<Servico> servs = new List<Servico>();
+            foreach (int s in servicos)
+            {
+                servs.Add(db.Servicos.Find(s));
+            }
 
-            return View("Index");
+            List<Especialidade> esps = new List<Especialidade>();
+            foreach (int s in especialidades)
+            {
+                esps.Add(db.Especialidades.Find(s));
+            }
+
+
+            a.Servicos = servs;
+            a.Especialidades = esps;
+            try
+            {
+                db.Clinicas.Add(a);
+                db.SaveChanges();
+                var tels = db.TelefonesClinicas.Where(t => t.IdAmostraClinica == dto.Id).ToList();
+                foreach(var tel in tels)
+                {
+                    tel.IdClinica = a.Id;
+         
+                }
+                
+                db.SaveChanges();
+                var identity = User.Identity as ClaimsIdentity;
+
+                int id = Convert.ToInt32(identity.Claims.FirstOrDefault(c => c.Type == "Id").Value);
+
+                var usuario = db.Usuarios.Find(id);
+                if (usuario.Pontos == null)
+                {
+                    usuario.Pontos = dto.pontos;
+                }
+                else
+                {
+                    usuario.Pontos += dto.pontos;
+                }
+                var amostra = db.AmostrasClinicas.Find(dto.Id).Ativo = false;
+                db.SaveChanges();
+        
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -29,9 +29,9 @@ namespace ListMed.Controllers
             ViewBag.servicos = new SelectList(db.Servicos, "Id", "Descricao");
             List<Clinica> clinicas = new List<Clinica>();
             if(local == " (Cidade)")
-                clinicas = db.Clinicas.Where(c => c.Cidade.Descricao.ToUpper().Contains(localidade.ToUpper())).ToList();
+                clinicas = db.Clinicas.Where(c => c.Cidade.Nome.ToUpper().Contains(localidade.ToUpper())).ToList();
             else
-                clinicas = db.Clinicas.Where(c => c.Estado.Descricao.ToUpper().Contains(localidade.ToUpper())).ToList();
+                clinicas = db.Clinicas.Where(c => c.Estado.Nome.ToUpper().Contains(localidade.ToUpper())).ToList();
             return View(clinicas);
         }
 
@@ -59,9 +59,9 @@ namespace ListMed.Controllers
                 }
               
                 if (local == " (Cidade)")
-                    model = db.Clinicas.Where(c => c.Cidade.Descricao.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null)) ).ToList();
+                    model = db.Clinicas.Where(c => c.Cidade.Nome.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null)) ).ToList();
                 else
-                    model = db.Clinicas.Where(c => c.Estado.Descricao.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null ))).ToList();
+                    model = db.Clinicas.Where(c => c.Estado.Nome.ToUpper().Contains(filtros.localidade.ToUpper()) && (c.PrecoConsulta <= filtros.preco || c.PrecoExame <= filtros.preco || (c.PrecoConsulta == null && c.PrecoExame == null ))).ToList();
 
 
 

@@ -202,7 +202,17 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-3 col-md-2">
-                                        <img src="@Url.Action("FotoPerfil", "Autenticacao", new { id = av.IdUsuario})" style="width: 3rem; height: 3rem;" class="rounded-circle" />
+
+
+                                        @if (av.Usuario.Foto == null)
+                                        {
+                                            <i class="fa fa-user-circle" id="imgPadrao" style="font-size: 3rem;"></i>
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Action("FotoPerfil", "Autenticacao", new { id = av.IdUsuario })" style="width: 3rem; height: 3rem;" class="rounded-circle" />
+                                        }
+
                                     </div>
                                     <div class="col-9 col-md-10">
                                         <span>@av.Usuario.nick</span><br />
@@ -277,7 +287,7 @@
 
                     <div id="editAvaliacao" style="display: none;">
                         <form action="~/Clinicas/ReavaliarClinica" id="reavClini" method="post">
-                            <input type="hidden" name="id" value="@avaliacao.Id" />
+                            <input type="hidden" name="id" value="@avaliacao.IdClinica,@avaliacao.IdUsuario" />
                             <h4 class="text-center">Avalie: </h4>
                             <div class="divAvaliacao border p-4">
                                 <div class="form-group">
@@ -295,7 +305,7 @@
                                     <textarea class="form-control" name="desc" id="descAvaliacaoE" rows="3">@avaliacao.comentario</textarea>
                                 </div>
                                 <div class="form-group" style="text-align: right;">
-                                    <input type="submit" ref="@avaliacao.Id" class="btn btn-primary" id="editavalie" value="Avalie" />
+                                    <input type="submit" ref="@avaliacao.IdClinica,@avaliacao.IdUsuario" class="btn btn-primary" id="editavalie" value="Avalie" />
                                 </div>
                             </div>
                         </form>

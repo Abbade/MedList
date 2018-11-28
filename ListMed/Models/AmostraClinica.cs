@@ -49,7 +49,7 @@ namespace ListMed.Models
 
         public TimeSpan? HoraFechamento { get; set; }
 
-        public int? IdEstado { get; set; }
+        public int IdEstado { get; set; }
 
         public int Pontos { get; set; }
 

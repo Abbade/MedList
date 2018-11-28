@@ -32,6 +32,8 @@ namespace ListMed.Models
 
         public byte[] Foto { get; set; }
 
+        public int? Pontos { get; set; }
+
         public TipoUsuario Tipo { get; set; } = TipoUsuario.Padrao;
 
         public virtual List<Avaliacao> Avaliacoes { get; set; }

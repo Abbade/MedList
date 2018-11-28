@@ -31,14 +31,14 @@ namespace ListMed.Controllers
         [HttpPost]
         public JsonResult ListarLocalidades(string nome)
         {
-            var localidades = db.Estados.Where(e => e.Descricao.ToUpper().Contains(nome.ToUpper())).OrderBy(c => c.Descricao).Select(a => new {
-                value = a.Descricao + " (Estado)",
-                label = a.Descricao + " (Estado)"
+            var localidades = db.Estados.Where(e => e.Nome.ToUpper().Contains(nome.ToUpper())).OrderBy(c => c.Nome).Select(a => new {
+                value = a.Nome + " (Estado)",
+                label = a.Nome + " (Estado)"
             }).Take(5).ToList();
-            localidades.AddRange(db.Cidades.Where(c => c.Descricao.ToUpper().Contains(nome.ToUpper())).OrderBy(a => a.Descricao).Select(s => new
+            localidades.AddRange(db.Cidades.Where(c => c.Nome.ToUpper().Contains(nome.ToUpper())).OrderBy(a => a.Nome).Select(s => new
             {
-                value = s.Descricao + " (Cidade)",
-                label = s.Descricao + " (Cidade)"
+                value = s.Nome + " (Cidade)",
+                label = s.Nome + " (Cidade)"
             }).Take(5).ToList());
             return Json(localidades);
         }

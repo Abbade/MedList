@@ -28,7 +28,8 @@ namespace ListMed.Controllers
                 Id = usu.Id,
                 nome = usu.nick,
                 email = usu.email,
-                temFoto = usu.Foto != null ? true : false
+                temFoto = usu.Foto != null ? true : false,
+                pontos = usu.Pontos == null ? 0 : (int)usu.Pontos
             };
             return View(p);
         }

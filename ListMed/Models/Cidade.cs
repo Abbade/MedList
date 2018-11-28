@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ListMed.Models
 {
-    [Table("Cidade")]
+    [Table("Municipio")]
     public class Cidade
     {
         public Cidade()
@@ -18,13 +18,13 @@ namespace ListMed.Models
         [Key]
         public int Id { get; set; }
 
+        public int Codigo { get; set; }
+
         [MaxLength(200, ErrorMessage = "A descrição não pode ultrapassar de 200 caracteres!")]
-        public string Descricao { get; set; }
+        public string Nome { get; set; }
 
-        public int IdEstado { get; set; }
-
-        [ForeignKey("IdEstado")]
-        public virtual Estado Estado { get; set; }
+        [MaxLength(2)]
+        public string Uf { get; set; }
 
         public virtual List<Clinica> Clinicas { get; set; }
     }

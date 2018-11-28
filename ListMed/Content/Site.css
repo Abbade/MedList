@@ -300,3 +300,6 @@ a.semEstilo:after {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     max-width: 5rem;
 }
+.ui-autocomplete{
+    z-index: 2000;
+}

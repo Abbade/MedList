@@ -37,7 +37,7 @@ namespace ListMed.Mineracao
                 clinicas = JsonConvert.DeserializeObject<retornoMineracao>(retorno);
                 foreach(var clinica in clinicas.results)
                 {
-                    Clinica c = new Clinica();
+                    AmostraClinica c = new AmostraClinica();
                     string tel1 = "", tel2 = "";
                     var cliAux = db.Clinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
                     if (cliAux == null)
@@ -48,7 +48,9 @@ namespace ListMed.Mineracao
                         c.Lg = clinica.geometry.location.lng.ToString();
                         c.avaliacao = clinica.rating;
                         c.EnderecoFormatado = clinica.formatted_address.Replace("Brazil", "Brasil"); ;
-                        c.IdEstado = 1;
+                        c.IdEstado =19;
+                        c.IdUsuario = 1;
+                        c.Ativo = true;
                         HttpResponseMessage response1 = client.GetAsync("/maps/api/place/details/json?placeid=" + clinica.place_id + "&fields=formatted_phone_number,address_components,website,photo&key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8").Result;
                         string retorno1 = "";
                         if (response1.IsSuccessStatusCode)
@@ -59,7 +61,7 @@ namespace ListMed.Mineracao
                             string cida = cid != null ? cid.short_name : null;
                             if (cida != null)
                             {
-                                var cidade = db.Cidades.Where(d => d.Descricao.ToUpper() == cida.ToUpper()).FirstOrDefault();
+                                var cidade = db.Cidades.Where(d => d.Nome.ToUpper() == cida.ToUpper()).FirstOrDefault();
                                 if (cidade != null)
                                     c.IdCidade = cidade.Id;
                             }
@@ -67,7 +69,7 @@ namespace ListMed.Mineracao
                             string bairri = bair != null ? bair.short_name : null;
                             if (bairri != null)
                             {
-                                var bairro = db.Bairros.Where(d => d.Descricao.ToUpper() == bairri.ToUpper()).FirstOrDefault();
+                                var bairro = db.Bairros.Where(d => d.Nome.ToUpper().Contains(bairri.ToUpper()) && d.Nome.Contains("Rio de Janeiro") ).FirstOrDefault();
                                 if (bairro != null)
                                     c.IdBairro = bairro.Id;
                             }
@@ -77,30 +79,18 @@ namespace ListMed.Mineracao
 
                         }
 
-                        db.Clinicas.Add(c);
+                        db.AmostrasClinicas.Add(c);
                         try
                         {
                             if (c.IdBairro != null && c.IdCidade != null && c.IdBairro > 0 && c.IdCidade > 0)
                             {
                                 db.SaveChanges();
                                 if(!string.IsNullOrEmpty(tel1))
-                                    db.TelefonesClinicas.Add(new TelefonesClinica { Numero = tel1, IdClinica = c.Id });
+                                    db.TelefonesClinicas.Add(new TelefonesClinica { Numero = tel1, IdAmostraClinica = c.Id });
                                 if (!string.IsNullOrEmpty(tel2))
-                                    db.TelefonesClinicas.Add(new TelefonesClinica { Numero = tel2, IdClinica = c.Id });
+                                    db.TelefonesClinicas.Add(new TelefonesClinica { Numero = tel2, IdAmostraClinica = c.Id });
                                 db.SaveChanges();
-                                if (clinica.photos != null && clinica.photos.Count > 0)
-                                {
-                                    foreach (var foto in clinica.photos)
-                                    {
-                                        Foto f = new Foto();
-              
-                                        f.URL = foto.html_attributions.FirstOrDefault();
-                                        f.IdClinica = c.Id;
-                                        db.Fotos.Add(f);
-                                        db.SaveChanges();
-                                        
-                                    }
-                                }
+                 
                             }
 
                         }
@@ -123,7 +113,7 @@ namespace ListMed.Mineracao
                     foreach (var clinica in clinicas.results)
                     {
                         string telcli1 = "", telcli2 = "";
-                        Clinica c = new Clinica();
+                        AmostraClinica c = new AmostraClinica();
                         var cliAux = db.Clinicas.FirstOrDefault(u => u.NomeFantasia == clinica.name);
                         if (cliAux == null)
                         {
@@ -133,7 +123,9 @@ namespace ListMed.Mineracao
                             c.Lg = clinica.geometry.location.lng.ToString();
                             c.avaliacao = clinica.rating;
                             c.EnderecoFormatado = clinica.formatted_address.Replace("Brazil", "Brasil");
-                            c.IdEstado = 1;
+                            c.IdEstado = 19;
+                            c.IdUsuario = 1;
+                            c.Ativo = true;
                             HttpResponseMessage response1 = client.GetAsync("/maps/api/place/details/json?placeid=" + clinica.place_id + "&fields=formatted_phone_number,address_components,website,photo&key=AIzaSyBbjKpIM4wD3dj3W5VqGuCYMH6hdoGhXP8").Result;
                             string retorno1 = "";
                             if (response1.IsSuccessStatusCode)
@@ -144,7 +136,7 @@ namespace ListMed.Mineracao
                                 string cida = cid != null ? cid.short_name : null;
                                 if (cida != null)
                                 {
-                                    var cidade = db.Cidades.Where(d => d.Descricao.ToUpper() == cida.ToUpper()).FirstOrDefault();
+                                    var cidade = db.Cidades.Where(d => d.Nome.ToUpper() == cida.ToUpper()).FirstOrDefault();
                                     if (cidade != null)
                                         c.IdCidade = cidade.Id;
                                 }
@@ -152,7 +144,7 @@ namespace ListMed.Mineracao
                                 string bairri = bair != null ? bair.short_name : null;
                                 if (bairri != null)
                                 {
-                                    var bairro = db.Bairros.Where(d => d.Descricao.ToUpper() == bairri.ToUpper()).FirstOrDefault();
+                                    var bairro = db.Bairros.Where(d => d.Nome.ToUpper().Contains(bairri.ToUpper()) && d.Nome.Contains("Rio de Janeiro")).FirstOrDefault();
                                     if (bairro != null)
                                         c.IdBairro = bairro.Id;
                                 }
@@ -162,29 +154,18 @@ namespace ListMed.Mineracao
 
                             }
 
-                            db.Clinicas.Add(c);
+                            db.AmostrasClinicas.Add(c);
                             try
                             {
                                 if (c.IdBairro != null && c.IdCidade != null && c.IdBairro > 0 && c.IdCidade > 0)
                                 {
                                     db.SaveChanges();
                                     if (!string.IsNullOrEmpty(telcli1))
-                                        db.TelefonesClinicas.Add(new TelefonesClinica { Numero = telcli1, IdClinica = c.Id });
+                                        db.TelefonesClinicas.Add(new TelefonesClinica { Numero = telcli1, IdAmostraClinica = c.Id });
                                     if (!string.IsNullOrEmpty(telcli2))
-                                        db.TelefonesClinicas.Add(new TelefonesClinica { Numero = telcli2, IdClinica = c.Id });
+                                        db.TelefonesClinicas.Add(new TelefonesClinica { Numero = telcli2, IdAmostraClinica = c.Id });
                                     db.SaveChanges();
-                                    if (clinica.photos != null && clinica.photos.Count > 0)
-                                    {
-                                        foreach (var foto in clinica.photos)
-                                        {
-                                            Foto f = new Foto();
-                           
-                                            f.URL = foto.html_attributions.FirstOrDefault();
-                                            f.IdClinica = c.Id;
-                                            db.Fotos.Add(f);
-                                            db.SaveChanges();
-                                        }
-                                    }
+           
                                 }
 
                             }

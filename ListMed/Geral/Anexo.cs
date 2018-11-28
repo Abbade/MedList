@@ -12,9 +12,14 @@ namespace ListMed.Geral
 
         public static byte[] ArqParaByte(HttpPostedFileBase arq)
         {
-            byte[] novoArq = new byte[arq.ContentLength];
-            arq.InputStream.Read(novoArq, 0, arq.ContentLength);
-            return novoArq;
+            if (arq != null)
+            {
+                byte[] novoArq = new byte[arq.ContentLength];
+                arq.InputStream.Read(novoArq, 0, arq.ContentLength);
+                return novoArq;
+            }
+            else
+                return null;
         }
 
         public static bool EhImagem(HttpPostedFileBase arq)
