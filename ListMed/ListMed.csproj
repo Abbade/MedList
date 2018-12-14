@@ -296,6 +296,10 @@
     <Content Include="ScriptMed\Inicio.js" />
     <Content Include="ScriptMed\Main.js" />
     <Content Include="ScriptMed\Perfil.js" />
+    <Content Include="ScriptsMapa\Bairros.sql" />
+    <Content Include="ScriptsMapa\Estados.sql" />
+    <Content Include="ScriptsMapa\Municipios.sql" />
+    <Content Include="ScriptsMapa\Regioes.sql" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

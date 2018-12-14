@@ -100,12 +100,22 @@ namespace ListMed.Controllers
             db.Avaliacoes.Add(av);
             db.SaveChanges();
             recalcularAvaliacao(av.IdClinica);
+            var usu = UsuarioLogado();
+            if(usu.Pontos == null)
+            {
+                usuario.Pontos = 25;
+            }
+            else
+            {
+                usuario.Pontos += 25;
+            }
+            db.SaveChanges();
             return RedirectToAction("Detalhes", new { id = id , returnMsg = "Clinica avaliada com sucesso!"});
         }
         [HttpPost]
-        public ActionResult ReavaliarClinica(int id, string desc, int estrelas)
+        public ActionResult ReavaliarClinica(int idClinica, int idUsuario, string desc, int estrelas)
         {
-            var av = db.Avaliacoes.Find(id);
+            var av = db.Avaliacoes.Where(a => a.IdClinica == idClinica && a.IdUsuario == idUsuario).FirstOrDefault();
             av.comentario = desc;
             av.nota = estrelas;
             av.DataHora = DateTime.Now;

@@ -287,7 +287,8 @@
 
                     <div id="editAvaliacao" style="display: none;">
                         <form action="~/Clinicas/ReavaliarClinica" id="reavClini" method="post">
-                            <input type="hidden" name="id" value="@avaliacao.IdClinica,@avaliacao.IdUsuario" />
+                            <input type="hidden" name="idClinica" value="@avaliacao.IdClinica" />
+                            <input type="hidden" name="idUsuario" value="@avaliacao.IdUsuario" />
                             <h4 class="text-center">Avalie: </h4>
                             <div class="divAvaliacao border p-4">
                                 <div class="form-group">
